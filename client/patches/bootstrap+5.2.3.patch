@@ -1,0 +1,66 @@
+diff --git a/node_modules/bootstrap/dist/css/bootstrap-utilities.css b/node_modules/bootstrap/dist/css/bootstrap-utilities.css
+index e8909fa..78281ec 100644
+--- a/node_modules/bootstrap/dist/css/bootstrap-utilities.css
++++ b/node_modules/bootstrap/dist/css/bootstrap-utilities.css
+@@ -80,7 +80,7 @@
+ }
+ 
+ .text-bg-primary {
+-  color: #fff !important;
++  color: rgb(255, 0, 0) !important;
+   background-color: RGBA(13, 110, 253, var(--bs-bg-opacity, 1)) !important;
+ }
+ 
+diff --git a/node_modules/bootstrap/dist/css/bootstrap.css b/node_modules/bootstrap/dist/css/bootstrap.css
+index fa2da29..d736cd8 100644
+--- a/node_modules/bootstrap/dist/css/bootstrap.css
++++ b/node_modules/bootstrap/dist/css/bootstrap.css
+@@ -86,6 +86,11 @@
+   }
+ }
+ 
++.appteq .btn{
++color: red;
++background-color: #04414d;
++}
++
+ body {
+   margin: 0;
+   font-family: var(--bs-body-font-family);
+@@ -2914,16 +2919,16 @@ textarea.form-control-lg {
+ }
+ 
+ .btn-success {
+-  --bs-btn-color: #fff;
+-  --bs-btn-bg: #198754;
+-  --bs-btn-border-color: #198754;
+-  --bs-btn-hover-color: #fff;
+-  --bs-btn-hover-bg: #157347;
+-  --bs-btn-hover-border-color: #146c43;
++  --bs-btn-color: rgb(255, 0, 0);
++  --bs-btn-bg: #ff0404;
++  --bs-btn-border-color: #ff0000;
++  --bs-btn-hover-color: rgb(255, 0, 0);
++  --bs-btn-hover-bg: #ff0606;
++  --bs-btn-hover-border-color: #6c1414;
+   --bs-btn-focus-shadow-rgb: 60, 153, 110;
+   --bs-btn-active-color: #fff;
+-  --bs-btn-active-bg: #146c43;
+-  --bs-btn-active-border-color: #13653f;
++  --bs-btn-active-bg: #6c1414;
++  --bs-btn-active-border-color: #ff0000;
+   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+   --bs-btn-disabled-color: #fff;
+   --bs-btn-disabled-bg: #198754;
+diff --git a/node_modules/bootstrap/js/src/button.js b/node_modules/bootstrap/js/src/button.js
+index 03e7604..b421a61 100644
+--- a/node_modules/bootstrap/js/src/button.js
++++ b/node_modules/bootstrap/js/src/button.js
+@@ -44,6 +44,7 @@ class Button extends BaseComponent {
+       const data = Button.getOrCreateInstance(this)
+ 
+       if (config === 'toggle') {
++          console.log("hi");
+         data[config]()
+       }
+     })

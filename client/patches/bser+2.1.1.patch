@@ -1,0 +1,15 @@
+diff --git a/node_modules/bser/index.js b/node_modules/bser/index.js
+index 4ae14d3..3f6a852 100644
+--- a/node_modules/bser/index.js
++++ b/node_modules/bser/index.js
+@@ -29,8 +29,9 @@ exports.Accumulator = Accumulator
+ // How much we can write into this buffer without allocating
+ Accumulator.prototype.writeAvail = function() {
+   return this.buf.length - this.writeOffset;
+-}
+   
++}
++console.log("maaaaaa");
+ // How much we can read
+ Accumulator.prototype.readAvail = function() {
+   return this.writeOffset - this.readOffset;
