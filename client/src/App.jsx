@@ -30,11 +30,12 @@ function App() {
       <Route path="/Forgot" element={<Forgot/>}/>
       <Route path="/Dashboard" element={<Dashboard/>}/>
       <Route exact path="/addform" element={<AddFormData/>}/>
-      <Route path="/updateformm" element={<UpdateFormData/>}/>
+      <Route path="/updateform" element={<UpdateFormData/>}/>
       <Route exact path="/displaydata" element={<DisplayFormData/>}/>
     </Routes>
     </BrowserRouter>
     </div>
+    
   );
 }
 

@@ -75,7 +75,7 @@ const Tutorial = props => {
 
   return (
     <>
-     <TopNavBar/>
+    <TopNavBar/>
     <SideNavBar/>
     <div className="dashboard">
       {currentTutorial ? (

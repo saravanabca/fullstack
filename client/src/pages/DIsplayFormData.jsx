@@ -59,6 +59,7 @@ const TutorialsList = (props) => {
     const id = tutorialsRef.current[rowIndex].id;
 
     props.history.push("/updateform/" + id);
+    
   };
 
   const deleteTutorial = (rowIndex) => {
