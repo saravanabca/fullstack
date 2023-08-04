@@ -32,7 +32,7 @@ function App() {
       <Route path="/Dashboard" element={<Dashboard/>}/>
       <Route exact path="/addform" element={<AddFormData/>}/>
       <Route path="/updateform" element={<UpdateFormData/>}/>
-      <Route exact path="/displaydata" element={<DisplayFormData/>}/>
+      <Route exact path="/displayydata" element={<DisplayFormData/>}/>
     </Routes>
     </BrowserRouter>
     </div>
