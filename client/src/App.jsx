@@ -20,6 +20,7 @@ const AddFormData = loadable(()=> import('./pages/AddFormData'))
 const UpdateFormData = loadable(()=> import('./pages/UpdateFormData'))
 const DisplayFormData = loadable(()=> import('./pages/DIsplayFormData'))
 
+
 function App() {
   return (
     <div>

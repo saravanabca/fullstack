@@ -6,7 +6,6 @@ const MyForm = () => {
     title: '',
     description: '',
   });
-  const formRef = useRef(null);
   const [errors, setErrors] = useState({});
   const [validationError, setValidationError] = useState('');
 
@@ -90,7 +89,7 @@ const MyForm = () => {
 
   return (
     <div className='dashboard'>
-    <form onSubmit={handleSubmit} ref={formRef}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Title:</label>
         <input type="text" name="title" value={formData.title} onChange={handleChange} />
