@@ -1,13 +1,17 @@
-import { React,useState,useEffect } from 'react';
+import { React,useState } from 'react';
 import './SideNavBar.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function SideNavBar() {
+const [isExpanded , setIsExpanded] =useState(false);
+
+  const toggleAccordion = () =>{
+    setIsExpanded((prevstate) => !prevstate);
+  };
   
   return ( 
     <>
-    
      <aside className="app-sidebar ps ps--active-y" >
         <ul className="side-menu">
           <li><h3>Main</h3></li>
@@ -30,13 +34,28 @@ export default function SideNavBar() {
 
           <li className="slide">
 
-            <a className="side-menu__item active" data-bs-toggle="slide" href="#"><i className="side-menu__icon fa fa-database"></i><span className="side-menu__label">Components</span><i className="angle fa fa-angle-right"></i></a>
+            <a className="side-menu__item active" onClick={toggleAccordion}>
+              <i className="side-menu__icon fa fa-database"></i>
+              <span className="side-menu__label">Component</span>
+              <i className="angle fa fa-angle-right"></i>
+            </a>
+            {isExpanded && 
+            <ul className="slide-menu">
 
-            <ul className="slide-menu" style={{display: "none"}}>
               <li><a href="#" className="slide-item"> Cards design</a></li>
+
               <li className="active"><a href="#" className="slide-item active"> Default calendar</a></li>
+              
              </ul>
+            }
           </li>
+
+          {/* <div>
+      <button onClick={toggleAccordion}>
+        {isExpanded ? 'Collapse' : 'Expand'}
+      </button>
+      {isExpanded && <div>Content to be displayed when expanded.</div>}
+    </div> */}
 
         </ul>	
         

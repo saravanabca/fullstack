@@ -6,7 +6,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 // import '../font-awesome/css/font-awesome.css';
-import '../node_modules/font-awesome/css/font-awesome.css'
+// import '../node_modules/font-awesome/css/font-awesome.css'
 import './App.css'
 // import Login from './pages/login';
 
@@ -32,7 +32,7 @@ function App() {
       <Route path="/Dashboard" element={<Dashboard/>}/>
       <Route exact path="/addform" element={<AddFormData/>}/>
       <Route path="/updateform" element={<UpdateFormData/>}/>
-      <Route exact path="/displayydata" element={<DisplayFormData/>}/>
+      <Route exact path="/displaydata" element={<DisplayFormData/>}/>
     </Routes>
     </BrowserRouter>
     </div>
