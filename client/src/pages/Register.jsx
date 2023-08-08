@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css"
+import "../assets/css/Login.css"
 // import fooderimage from "./images/img-6.png";
 import Social from "../component/Login/Social"
 import { Link } from "react-router-dom";
@@ -71,8 +71,8 @@ export default function RegisterForm() {
                             </div>
                             <div className="col-lg-6 align-self-center form-text">
                                 <div className="info clearfix align-self-center">
-                                    <h1 className="animate-charcter">We Make Spectacular</h1>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type scrambled it to make</p>
+                                    <h2 className="animate-charcter">Programming isn't about what you know,it's about what you can figure out</h2>
+                                    {/* <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type scrambled it to make</p> */}
                                 </div>
                             </div>
                         </div>

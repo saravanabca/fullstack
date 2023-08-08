@@ -1,9 +1,9 @@
 import React from "react";
-import "./Login.css"
+import "../assets/css/Login.css";
 import Social from "../component/Login/Social"
 // import fooderimage from "./images/img-6.png";
 import { Link } from "react-router-dom";
-// import "https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800;900&display=swap"
+
 
 export default function ForgotPassword() {
     return (
