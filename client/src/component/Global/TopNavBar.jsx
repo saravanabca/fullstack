@@ -7,6 +7,7 @@ function Navbar() {
   return (
     <nav className='topnav'>
       <ul className='topnav_menu'>
+        <li className=''>Tittle</li>
         <li title='Log Out'><Link to="/">LogOut</Link></li>
        
       </ul>

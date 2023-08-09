@@ -12,7 +12,7 @@ export default function SideNavBar() {
 
   return (
     <>
-      <aside className="app-sidebar ps ps--active-y">
+      <aside className="app-sidebar ps ps--active-y ">
         <ul className="side-menu">
           <li>
             <h3>Main</h3>
@@ -75,20 +75,25 @@ export default function SideNavBar() {
               <ul className="slide-menu">
                 <li>
                   <a href="#" className="slide-item">
-                    {" "}
+                 
                     Cards design
                   </a>
                 </li>
 
                 <li className="active">
                   <a href="#" className="slide-item active">
-                    {" "}
+                  
                     Default calendar
                   </a>
                 </li>
               </ul>
             )}
           </li>
+
+
+
+
+          
 
           {/* <div>
       <button onClick={toggleAccordion}>
