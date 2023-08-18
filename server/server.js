@@ -9,9 +9,15 @@ app.use(cors());
 // app.use(
 //   cors({
 //     credentials: true,
-//     origin: ["http://localhost:8081"],
+//     origin: ["http://localhost:3000"],
 //   })
 // );
+
+app.use(cors(corsOptions));
+
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -47,7 +53,7 @@ app.get("/", (req, res) => {
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-
+require("./app/routes/tutorial.routes.js")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

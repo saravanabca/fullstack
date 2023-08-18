@@ -1,116 +1,122 @@
-import React, { useState,useRef } from 'react';
+import React, { useState } from "react";
+import Icon from "../Images/Icon.svg";
+import Profile from "../Images/profile.png";
+import Dashboard from "../Images/dashboard.svg";
+import Transactions from "../Images/transactions.svg";
+import Performance from "../Images/performance.svg";
+import News from "../Images/news.svg";
+import Settings from "../Images/settings.svg";
+import Support from "../Images/support.svg";
+import { useLocation } from "react-router-dom";
+import "../Images/m.css";
 
-const MyForm = () => {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-  });
-  const [errors, setErrors] = useState({});
-  const [validationError, setValidationError] = useState('');
+const Sidebar = () => {
+    const location = useLocation();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
+    const [closeMenu, setCloseMenu] = useState(false);
 
-  // Validation:
-  const validateForm = () => {
-    let validationErrors = {};
+    const handleCloseMenu = () => {
+        setCloseMenu(!closeMenu);
+    };
 
-    if (!formData.title.trim()) {
-      validationErrors.title = 'title is required';
-    }else if (formData.title.length < 4){
-      validationErrors.title = "Input must be at least 4 characters long."
-    }
-
-   else if (!formData.description.trim()) {
-      validationErrors.description = 'description is required';
-    } 
-
-    // if (!formData.password.trim()) {
-    //   validationErrors.password = 'Password is required';
-    // } else if (formData.password.length < 6) {
-    //   validationErrors.password = 'Password should be at least 6 characters long';
-    // }
-
-    setErrors(validationErrors);
-    return Object.keys(validationErrors).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const isFormValid = validateForm();
-    //  console.log(isFormValid);
-    // const answer =JSON.stringify(formData);
-    // console.log(answer);
-
-
-
-    if (isFormValid) {
-
-      const jsonData = JSON.stringify(formData);
-      console.log(jsonData);
-
-      // const fetchData = async () => {
-      //   try {
-      //     const response = await fetch('http://localhost:8080/api/tutorials/', {
-      //       method: 'POST',
-      //       headers: {
-      //         'Content-Type': 'application/json',
-      //         // Add any other required headers
-      //       },
-      //       body: JSON.stringify(formData),
-            
-      //     });
-        
-      //     if (!response.ok) {
-      //       throw new Error('Network response was not ok');
-      //     }
-      //     console.log(response);
-      //     // const jsonData = await response.json();
-      //     // formData(jsonData);
-      //     // setError(null); // Clear any previous error
-      //   } catch (error) {
-      //     console.error('Error fetching data:', error);
-      //     // setError('Error fetching data. Please try again later.');
-      //   }
-      
-      // };
-      // Perform actions with the form data
-      // console.log(formData);
-      
-    }
-  };
-
-  return (
-    <div className='dashboard'>
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input type="text" name="title" value={formData.title} onChange={handleChange} />
-        {errors.title && <span className='text-danger'>{errors.title}</span>}
-        {validationError && <div className='text-danger'>{validationError}</div>}
-      </div>
-      <div>
-        <label>description:</label>
-        <input type="text" name="description" value={formData.description} onChange={handleChange} />
-        {errors.description && <span className='text-danger'>{errors.description}</span>}
-      </div>
-      {/* <div>
-        <label>Password:</label>
-        <input type="password" name="password" value={formData.password} onChange={handleChange} />
-        {errors.password && <span className='text-danger'>{errors.password}</span>}
-      </div> */}
-
-      <button type="submit">Submit</button>
-      {/* <div><input type="reset" value="Reset Form"/></div> */}
-    </form>
-    </div>
-  );
+    return (
+        <div className={closeMenu === false ? "sidebar" : "sidebar active"}>
+            <div
+                className={
+                    closeMenu === false
+                        ? "logoContainer"
+                        : "logoContainer active"
+                }
+            >
+                <img src={Icon} alt="icon" className="logo" />
+                <h2 className="title">evergreen. </h2>
+            </div>
+            <div
+                className={
+                    closeMenu === false
+                        ? "burgerContainer"
+                        : "burgerContainer active"
+                }
+            >
+                <div
+                    className="burgerTrigger"
+                    onClick={() => {
+                        handleCloseMenu();
+                    }}
+                ></div>
+                <div className="burgerMenu"></div>
+            </div>
+            <div
+                className={
+                    closeMenu === false
+                        ? "profileContainer"
+                        : "profileContainer active"
+                }
+            >
+                <img src={Profile} alt="profile" className="profile" />
+                <div className="profileContents">
+                    <p className="name">Hello, John👋</p>
+                    <p>johnsmith@gmail.com</p>
+                </div>
+            </div>
+            <div
+                className={
+                    closeMenu === false
+                        ? "contentsContainer"
+                        : "contentsContainer active"
+                }
+            >
+                <ul>
+                    <li className={location.pathname === "/" ? "active" : ""}>
+                        <img src={Dashboard} alt="dashboard" />
+                        <a href="/">dashboard</a>
+                    </li>
+                    <li
+                        className={
+                            location.pathname === "/transactions"
+                                ? "active"
+                                : ""
+                        }
+                    >
+                        <img src={Transactions} alt="transactions" />
+                        <a href="/transactions">transactions</a>
+                    </li>
+                    <li
+                        className={
+                            location.pathname === "/performance" ? "active" : ""
+                        }
+                    >
+                        <img src={Performance} alt="Performance" />
+                        <a href="/performance">performance</a>
+                    </li>
+                    <li
+                        className={
+                            location.pathname === "/news" ? "active" : ""
+                        }
+                    >
+                        <img src={News} alt="News" />
+                        <a href="/news">news</a>
+                    </li>
+                    <li
+                        className={
+                            location.pathname === "/settings" ? "active" : ""
+                        }
+                    >
+                        <img src={Settings} alt="Settings" />
+                        <a href="/settings">settings</a>
+                    </li>
+                    <li
+                        className={
+                            location.pathname === "/support" ? "active" : ""
+                        }
+                    >
+                        <img src={Support} alt="Support" />
+                        <a href="/support">support</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    );
 };
 
-export default MyForm;
+export default Sidebar;

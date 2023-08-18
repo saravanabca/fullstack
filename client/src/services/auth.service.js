@@ -23,6 +23,7 @@ const login = (username, password) => {
       if (response.data.username) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
+      console.log(response);
       return response.data;
     });
 };
@@ -30,6 +31,7 @@ const login = (username, password) => {
 const logout = () => {
   localStorage.removeItem("user");
   return axios.post(API_URL + "signout").then((response) => {
+    console.log(response);
     return response.data;
   });
 };

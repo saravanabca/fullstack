@@ -80,6 +80,7 @@ export default function LoginForm() {
             dispatch(login(data))
             .unwrap()
             .then(() => {
+                console.log(login);
                 alert("success");
               navigate("/addform");
               window.location.reload();
@@ -111,11 +112,11 @@ export default function LoginForm() {
                                </div> */}
 
                                     <form id="commonForm">
-                                        <div className="form-group position-relative clearfix">
+                                        <div className="form-group position-relative clearfix ">
                                             <input
                                                 name="username"
                                                 type="text"
-                                                className="form-control "
+                                                className="form-control inpu-focus"
                                                 placeholder="UserName"
                                                 aria-label=""
                                                 autoComplete="off"
@@ -134,7 +135,7 @@ export default function LoginForm() {
                                             </div>
                                             <span className="text-danger">{errors.username}</span>
                                         </div>
-
+                                        
                                         <div className="form-group clearfix position-relative password-wrapper">
                                             <input
                                                 name="password"

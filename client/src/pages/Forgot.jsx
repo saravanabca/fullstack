@@ -13,16 +13,17 @@ export default function ForgotPassword() {
                 <div className="login-25">
                     <div className="container">
                         <div className="row login-box">
+                          <div className="col-lg-3"></div>
                             <div className="col-lg-6 form-section">
                                 <div className="form-inner">
                                     <a href="login-25.html" className="logo">
                                         <img src="assets/img/logos/logo-2.png" alt="logo" />
                                     </a>
                                     <h3>Recover Your Password</h3>
-                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {/* <div class="alert alert-success alert-dismissible fade show" role="alert">
                                         <strong>Congrats,</strong> and email has been sent to your email.
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                    </div>
+                                    </div> */}
                                     <form action="#" method="POST" id="commonForm">
 
                                         <div className="form-group position-relative clearfix">
@@ -44,12 +45,13 @@ export default function ForgotPassword() {
                                     <p>Already a member?   <Link to="/">Login here</Link></p>
                                 </div>
                             </div>
-                            <div className="col-lg-6 align-self-center form-text">
+                            <div className="col-lg-3"></div>
+                            {/* <div className="col-lg-6 align-self-center form-text">
                                 <div className="info clearfix align-self-center">
                                     <h1 className="animate-charcter">We Make Spectacular</h1>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type scrambled it to make</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

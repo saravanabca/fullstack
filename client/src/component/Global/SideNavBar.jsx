@@ -24,7 +24,7 @@ export default function SideNavBar() {
               className="side-menu__item"
               data-bs-toggle="slide">
               <span className="side-menu__label">
-                <FontAwesomeIcon icon="coffee" size="1x" /> Dashboard
+                <FontAwesomeIcon icon="coffee" size="1x" className="f-i" /> Dashboard
               </span>
             </Link>
           </li>
@@ -35,11 +35,11 @@ export default function SideNavBar() {
 
           <li>
             <Link to="/addform" className="side-menu__item">
-              <i className="side-menu__icon f fa-grid"></i>
+              <i className="side-menu__icon fa fa-grid"></i>
               <span className="side-menu__label">
                 <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                  &#10146;
-                </span>{" "}
+                 
+                </span>
                 Add Form
               </span>
             </Link>

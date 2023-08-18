@@ -6,8 +6,8 @@ export default function dashboard() {
 
   return (
     <>
-     <TopNavBar/>
-     <SideNavBar/>
+     {/* <TopNavBar/>
+     <SideNavBar/> */}
      <Example/>
       {/* <h6 className="">Coming Soon</h6> */}
     </>

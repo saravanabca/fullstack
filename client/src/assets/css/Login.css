@@ -5,6 +5,56 @@
     color: #535353;
 } */
 
+
+
+.inpu-focus:focus + .input-label{
+    top: -.5rem;
+}
+
+
+.inpu-focus:focus + .input-label{
+    top: -.5rem;
+    left: .8rem;
+    color: black;
+    font-size:10px ;
+    font-weight: 500;
+    z-index: 10;
+  }
+  
+  /*Input focus sticky top label*/
+  .inpu-focus:not(:placeholder-shown).inpu-focus:not(:focus)+ .input-label{
+    top: -.5rem;
+    left: .8rem;
+    font-size: 10px;
+    font-weight: 500;
+    z-index: 10;
+  }
+  
+  /*Input focus*/
+  .inpu-focus:focus{
+    border: 1.5px solid blue;
+  }
+  .input-main{
+    position: relative;
+    height: 48px;
+    margin-bottom: 1.5rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .img-fluid {
     max-width: 100% !important;
     height: auto;
