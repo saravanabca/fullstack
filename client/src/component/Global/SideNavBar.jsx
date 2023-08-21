@@ -1,18 +1,44 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import "../../assets/css/SideNavBar.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { BiSolidDashboard } from "react-icons/bi";
 
-export default function SideNavBar() {
+export default function SideNavBar(props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleAccordion = () => {
     setIsExpanded((prevstate) => !prevstate);
   };
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [showUserBoard, setShowUserBoard] = useState(false);
+
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+
+  useEffect(() => {
+    if (currentUser) {
+      // setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
+      // setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+      setShowUserBoard(currentUser.roles.includes("ROLE_USER"));
+    } else {
+      // setShowModeratorBoard(false);
+      // setShowAdminBoard(false);
+      setShowUserBoard(false);
+    }
+  }, [currentUser]);
+
+console.log(props.closeMenu);
+
+
 
   return (
     <>
-      <aside className="app-sidebar ps ps--active-y ">
+      <aside className={props.closeMenu === false ? "app-sidebar ps" : "activate ps"} >
+      <div className='main-logo'>Example Company</div>
         <ul className="side-menu">
           <li>
             <h3>Main</h3>
@@ -21,51 +47,103 @@ export default function SideNavBar() {
           <li className="slide" title="Dashboard">
             <Link
               to="/Dashboard"
-              className="side-menu__item"
-              data-bs-toggle="slide">
+              className="side-menu__item">
+               <BiSolidDashboard style={{fontSize:"25px"}} className="ri"/>
+              {/* <FontAwesomeIcon icon="coffee" style={{fontSize:"25px"}} className="f-i" /> */}
               <span className="side-menu__label">
-                <FontAwesomeIcon icon="coffee" size="1x" className="f-i" /> Dashboard
+                 Dashboard
               </span>
             </Link>
           </li>
 
           <li>
-            <h3>CRUD &amp; Validation</h3>
+            <h3 className="side-menu__label">CRUD &amp; Validation</h3>
           </li>
 
-          <li>
-            <Link to="/addform" className="side-menu__item">
-              <i className="side-menu__icon fa fa-grid"></i>
-              <span className="side-menu__label">
-                <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                 
+          {showUserBoard && (
+            <li>
+              <Link to="/addform" className="side-menu__item">
+                <i className="side-menu__icon fa fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                  </span>
+                  Add Form
                 </span>
-                Add Form
-              </span>
-            </Link>
-          </li>
+              </Link>
+            </li>
+          )}
 
-          <li>
-            <Link to="/displaydata" className="side-menu__item">
-              <i className="side-menu__icon f fa-grid"></i>
-              <span className="side-menu__label">
-                <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                  &#10146;
-                </span>{" "}
-                Data Table
-              </span>
-            </Link>
-          </li>
-
-          {/* <li>
-            <Link to="/tutorials" className="side-menu__item" href="#"><i className="side-menu__icon f fa-grid"></i><span className="side-menu__label"><span style={{fontSize:'20px',marginTop:'100px'}}>&#10146;</span> Data Table</span></Link>
-          </li> */}
-
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/displaydata" className="side-menu__item">
+                <i className="side-menu__icon f fa-grid"></i>
+                <span className="side-menu__label">
+                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
+                    &#10146;
+                  </span>{" "}
+                  Data Table
+                </span>
+              </Link>
+            </li>
+          
           <li>
             <h3>Elements</h3>
-          </li>
 
-          <li className="slide">
+          </li><li className="slide">
             <a className="side-menu__item active" onClick={toggleAccordion}>
               <i className="side-menu__icon fa fa-database"></i>
               <span className="side-menu__label">Component</span>
@@ -75,35 +153,24 @@ export default function SideNavBar() {
               <ul className="slide-menu">
                 <li>
                   <a href="#" className="slide-item">
-                 
+
                     Cards design
                   </a>
                 </li>
 
                 <li className="active">
                   <a href="#" className="slide-item active">
-                  
+
                     Default calendar
                   </a>
                 </li>
               </ul>
             )}
           </li>
-
-
-
-
-          
-
-          {/* <div>
-      <button onClick={toggleAccordion}>
-        {isExpanded ? 'Collapse' : 'Expand'}
-      </button>
-      {isExpanded && <div>Content to be displayed when expanded.</div>}
-    </div> */}
         </ul>
 
-        <div className="ps__rail-x " style={{ left: "0px", bottom: "0px" }}>
+
+       <div className="ps__rail-x " style={{ left: "0px", bottom: "0px" }}>
           <div
             className="ps__thumb-x "
             tabIndex="0"

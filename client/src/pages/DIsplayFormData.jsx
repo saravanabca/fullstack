@@ -133,7 +133,7 @@ const TutorialsList = (props) => {
   return (
     <>
     <TopNavBar/>
-    <SideNavBar/>
+    {/* <SideNavBar/> */}
     <div className="list row dashboard">
       <div className="col-md-8">
         <div className="input-group mb-3">
