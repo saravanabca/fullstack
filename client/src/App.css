@@ -1,6 +1,13 @@
+
+body{
+overflow-x: hidden;
+}
+
 .list .action {
   cursor: pointer;
 }
+
+
 
 .submit-form {
   max-width: 300px;
@@ -13,10 +20,10 @@
 }
 @media (min-width:768px){
   .dashboard{
-      margin-left: 290px;
+    padding-top: 2rem;
+    margin-left: 18rem;
   }
 }
-
 .text-danger{
   color: red;
 }

@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'; 
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
-// import '../font-awesome/css/font-awesome.css';
-import '../node_modules/font-awesome/css/font-awesome.css'
 import './App.css'
 // import Login from './pages/login';
 
@@ -19,6 +17,7 @@ const AddFormData = loadable(()=> import('./pages/AddFormData'))
 
 const UpdateFormData = loadable(()=> import('./pages/UpdateFormData'))
 const DisplayFormData = loadable(()=> import('./pages/DIsplayFormData'))
+
 
 function App() {
   return (
