@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import "../../assets/css/SideNavBar.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BiSolidDashboard } from "react-icons/bi";
-
+import { RiFileAddFill } from "react-icons/ri";
+import { CgDatabase } from "react-icons/cg";
 export default function SideNavBar(props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -31,146 +32,107 @@ export default function SideNavBar(props) {
     }
   }, [currentUser]);
 
-console.log(props.closeMenu);
+     console.log(props.closeMenu);
 
 
 
   return (
     <>
       <aside className={props.closeMenu === false ? "app-sidebar ps" : "activate ps"} >
-      <div className='main-logo'>Example Company</div>
-        <ul className="side-menu">
-          <li>
-            <h3>Main</h3>
-          </li>
 
+        <div className='main-logo'>
+          <div className="sub-logo">
+            <BiSolidDashboard  className="react-icon" />
+            <span className="side-menu__label">Example Company</span>
+          </div>
+        </div>
+
+        <ul className="side-menu">
+
+          <h3 className="side-menu__label">Main</h3>
           <li className="slide" title="Dashboard">
             <Link
               to="/Dashboard"
               className="side-menu__item">
-               <BiSolidDashboard style={{fontSize:"25px"}} className="ri"/>
+              <BiSolidDashboard  className="react-icon" />
               {/* <FontAwesomeIcon icon="coffee" style={{fontSize:"25px"}} className="f-i" /> */}
               <span className="side-menu__label">
-                 Dashboard
+                Dashboard
               </span>
             </Link>
           </li>
 
-          <li>
-            <h3 className="side-menu__label">CRUD &amp; Validation</h3>
-          </li>
+
+          <h3 className="side-menu__label">CRUD &amp; Validation</h3>
 
           {showUserBoard && (
-            <li>
-              <Link to="/addform" className="side-menu__item">
-                <i className="side-menu__icon fa fa-grid"></i>
+            <li className="slide" title="Dashboard">
+              <Link
+                to="/addform"
+                className="side-menu__item">
+                <RiFileAddFill  className="react-icon" />
                 <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                  </span>
                   Add Form
                 </span>
               </Link>
             </li>
           )}
 
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/displaydata" className="side-menu__item">
-                <i className="side-menu__icon f fa-grid"></i>
-                <span className="side-menu__label">
-                  <span style={{ fontSize: "20px", marginTop: "100px" }}>
-                    &#10146;
-                  </span>{" "}
-                  Data Table
-                </span>
-              </Link>
-            </li>
-          
+          <li className="slide" title="Dashboard">
+            <Link
+              to="/displaydata"
+              className="side-menu__item">
+              <CgDatabase  className="react-icon" />
+              <span className="side-menu__label">
+                Display Data
+              </span>
+            </Link>
+          </li>
+
+
           <li>
-            <h3>Elements</h3>
+            <h3 className="side-menu__label">Elements</h3>
 
           </li><li className="slide">
             <a className="side-menu__item active" onClick={toggleAccordion}>
               <i className="side-menu__icon fa fa-database"></i>
               <span className="side-menu__label">Component</span>
-              <i className="angle fa fa-angle-right"></i>
+              {
+                isExpanded == false ? <i className="angle fa fa-angle-right"></i> : <i className="angle fa fa-angle-down"></i>
+              }
+
             </a>
             {isExpanded && (
-              <ul className="slide-menu">
-                <li>
-                  <a href="#" className="slide-item">
-
-                    Cards design
-                  </a>
+              <ul className="slide-menu accordion-drop">
+                <li className="slide" title="Dashboard">
+                  <Link
+                    to="/displaydata"
+                    className="side-menu__item">
+                    <CgDatabase className="react-icon" />
+                    <span className="side-menu__label">
+                      Display Data
+                    </span>
+                  </Link>
                 </li>
 
-                <li className="active">
-                  <a href="#" className="slide-item active">
-
-                    Default calendar
-                  </a>
+                <li className="slide" title="Dashboard">
+                  <Link
+                    to="/displaydata"
+                    className="side-menu__item">
+                    <CgDatabase className="react-icon" />
+                    <span className="side-menu__label">
+                      Display Data
+                    </span>
+                  </Link>
                 </li>
+
               </ul>
             )}
           </li>
         </ul>
 
 
-       <div className="ps__rail-x " style={{ left: "0px", bottom: "0px" }}>
+        <div className="ps__rail-x " style={{ left: "0px", bottom: "0px" }}>
           <div
             className="ps__thumb-x "
             tabIndex="0"

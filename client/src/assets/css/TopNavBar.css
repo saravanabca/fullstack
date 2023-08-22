@@ -20,4 +20,6 @@
 }
 .main-top-submenu .logout a{
     text-decoration: none !important;
+    color: black;
+    padding: 3px;
 }

@@ -1,15 +1,18 @@
 import React from "react";
-import SideNavBar from "../component/Global/SideNavBar";
 import TopNavBar from "../component/Global/TopNavBar";
-import Example from "../component/Global/Example";
+import Card from "../component/main/card"
 export default function dashboard() {
 
   return (
     <>
-     {/* <TopNavBar/>
-     <SideNavBar/> */}
-     <Example/>
-      {/* <h6 className="">Coming Soon</h6> */}
+      <TopNavBar/>
+      <div className="main-page">
+      <Card />
+      
+      <p>
+        testtstfuhcgdsuhvdilj jknjvfjjvn
+      </p>
+     </div>
     </>
 
   );

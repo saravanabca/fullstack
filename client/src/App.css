@@ -19,7 +19,7 @@ overflow-x: hidden;
   margin: auto;
 }
 @media (min-width:768px){
-  .dashboard{
+  .main-page{
     padding-top: 2rem;
     margin-left: 18rem;
   }
