@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { BiSolidDashboard } from "react-icons/bi";
 import { RiFileAddFill } from "react-icons/ri";
 import { CgDatabase } from "react-icons/cg";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
+import {PiWebhooksLogoThin} from "react-icons/pi";
+import {SiWebmoney} from "react-icons/si";
 export default function SideNavBar(props) {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -32,7 +35,7 @@ export default function SideNavBar(props) {
     }
   }, [currentUser]);
 
-     console.log(props.closeMenu);
+  console.log(props.closeMenu);
 
 
 
@@ -42,8 +45,8 @@ export default function SideNavBar(props) {
 
         <div className='main-logo'>
           <div className="sub-logo">
-            <BiSolidDashboard  className="react-icon" />
-            <span className="side-menu__label">Example Company</span>
+            <SiWebmoney className="react-icon" />
+            <span className="side-menu__label">Simple Explore</span>
           </div>
         </div>
 
@@ -53,8 +56,8 @@ export default function SideNavBar(props) {
           <li className="slide" title="Dashboard">
             <Link
               to="/Dashboard"
-              className="side-menu__item">
-              <BiSolidDashboard  className="react-icon" />
+              className={props.pageactive === 'Dashboard' ? "active side-menu__item" : "side-menu__item"}>
+              <BiSolidDashboard className="react-icon" />
               {/* <FontAwesomeIcon icon="coffee" style={{fontSize:"25px"}} className="f-i" /> */}
               <span className="side-menu__label">
                 Dashboard
@@ -69,8 +72,8 @@ export default function SideNavBar(props) {
             <li className="slide" title="Dashboard">
               <Link
                 to="/addform"
-                className="side-menu__item">
-                <RiFileAddFill  className="react-icon" />
+                className={props.pageactive === 'addform' ? "active side-menu__item" : "side-menu__item"}>
+                <RiFileAddFill className="react-icon" />
                 <span className="side-menu__label">
                   Add Form
                 </span>
@@ -81,8 +84,8 @@ export default function SideNavBar(props) {
           <li className="slide" title="Dashboard">
             <Link
               to="/displaydata"
-              className="side-menu__item">
-              <CgDatabase  className="react-icon" />
+              className={props.pageactive === 'displaydata' ? "active side-menu__item" : "side-menu__item"}>
+              <CgDatabase className="react-icon" />
               <span className="side-menu__label">
                 Display Data
               </span>
@@ -93,15 +96,14 @@ export default function SideNavBar(props) {
           <li>
             <h3 className="side-menu__label">Elements</h3>
 
-          </li><li className="slide">
-            <a className="side-menu__item active" onClick={toggleAccordion}>
+          </li><li className="slide ">
+            <Link to="" className="side-menu__item" onClick={toggleAccordion}>
               <i className="side-menu__icon fa fa-database"></i>
               <span className="side-menu__label">Component</span>
-              {
-                isExpanded == false ? <i className="angle fa fa-angle-right"></i> : <i className="angle fa fa-angle-down"></i>
-              }
 
-            </a>
+              {isExpanded == false ? <IoIosArrowForward className="react-icon" />
+                : <IoIosArrowDown className="react-icon" />}
+            </Link>
             {isExpanded && (
               <ul className="slide-menu accordion-drop">
                 <li className="slide" title="Dashboard">

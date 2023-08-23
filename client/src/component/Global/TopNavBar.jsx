@@ -6,7 +6,7 @@ import { logout } from "../../slices/auth";
 import SideNavBar from "../Global/SideNavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {BiLogOut} from "react-icons/bi";
-function Navbar() { 
+function Navbar(props) { 
 
   const dispatch = useDispatch();
 
@@ -22,6 +22,7 @@ function Navbar() {
     // alert('hai');
     // console.log(!closeMenu);
   };
+const pageactive = props.pageActive;
 
   return (
     <nav className='topnav'>
@@ -35,7 +36,7 @@ function Navbar() {
         <div className='main-top-submenu d-flex'>
           <div className='top-submenu logout' title='Log Out'><BiLogOut/><Link to="/" onClick={logOut}>Logout</Link></div>
         </div>
-        <SideNavBar closeMenu={closeMenu} className="main-top-menu" />
+        <SideNavBar closeMenu={closeMenu} pageactive={pageactive}/>
       </div>
       {/* <ul className='topnav_menu '>
          <li className=''>Example Company</li>

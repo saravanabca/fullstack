@@ -46,7 +46,7 @@ const AddTutorial = () => {
 
   return (
 <>
-     <TopNavBar/>
+     <TopNavBar pageActive="addform"/>
      {/* <SideNavBar/> */}
     <div className="submit-form main-page">
       {submitted ? (

@@ -131,7 +131,7 @@ const TutorialsList = (props) => {
 
   return (
     <>
-    <TopNavBar/>
+    <TopNavBar pageActive="displaydata"/>
     {/* <SideNavBar/> */}
     <div className="list row main-page">
       <div className="col-md-8">

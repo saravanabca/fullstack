@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { clearMessage } from "../slices/message";
 import { useDispatch } from "react-redux";
 import { login } from "../slices/auth";
+import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 export default function LoginForm() {
     /*=====[ # Declare a State Variable  # ]=====*/
 
@@ -81,8 +82,8 @@ export default function LoginForm() {
             .unwrap()
             .then(() => {
                 console.log(login);
-                alert("success");
-              navigate("/addform");
+                alert(data.username);
+              navigate("/Dashboard");
               window.location.reload();
             })
             .catch(() => {
@@ -148,8 +149,8 @@ export default function LoginForm() {
                                                 onChange={handleChange}
                                             />
                                             <span onClick={togglePasswordVisibility}>
-                                                {passwordVisible ? <i className="fa fa-info-circle password-indicator"></i> :
-                                                <i className="fa fa-eye password-indicator"></i>
+                                                {passwordVisible ? <AiFillEye className="password-indicator"/> :
+                                                <AiFillEyeInvisible className="password-indicator"/>
                                                 }
                                             </span>
 
