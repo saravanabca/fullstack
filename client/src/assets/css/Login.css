@@ -146,7 +146,7 @@
     align-items: center;
     padding: 30px 0;
     overflow: hidden;
-    background: #fff4f4;
+    background: #20492a00;
 }
 
 .login-25 .info{
@@ -401,11 +401,11 @@
 }
 
 .login-25 .btn-primary{
-    background-image: linear-gradient(to bottom, #ff4a4a, #ff8a00);
+    background: linear-gradient(to bottom right, #34a853 0%, #054516b3  100%);
 }
 
 .login-25 .btn-primary:after {
-    background-image: linear-gradient(to bottom, #ff8a00, #ff4a4a);
+    background: linear-gradient(to bottom right, #34a853 0%, #054516b3  100%);
 }
 
 .login-25 .social-list {
@@ -437,7 +437,7 @@
     top: 0;
     font-size: 14px;
     background-color: #ffffff;
-    color: #ffffff;
+    color: #000000;
     padding: 5px 8px;
     border-radius: 5px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);

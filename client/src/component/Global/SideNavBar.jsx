@@ -95,7 +95,7 @@ export default function SideNavBar(props) {
 
           <li>
             <h3 className="side-menu__label">Elements</h3>
-
+            {/* shine */}
           </li><li className="slide ">
             <Link to="" className="side-menu__item" onClick={toggleAccordion}>
               <i className="side-menu__icon fa fa-database"></i>
@@ -108,7 +108,7 @@ export default function SideNavBar(props) {
               <ul className="slide-menu accordion-drop">
                 <li className="slide" title="Dashboard">
                   <Link
-                    to="/displaydata"
+                    to="#"
                     className="side-menu__item">
                     <CgDatabase className="react-icon" />
                     <span className="side-menu__label">
@@ -119,7 +119,7 @@ export default function SideNavBar(props) {
 
                 <li className="slide" title="Dashboard">
                   <Link
-                    to="/displaydata"
+                    to="#"
                     className="side-menu__item">
                     <CgDatabase className="react-icon" />
                     <span className="side-menu__label">

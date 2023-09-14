@@ -22,13 +22,16 @@ function Navbar(props) {
     // alert('hai');
     // console.log(!closeMenu);
   };
-const pageactive = props.pageActive;
+
+const pageActive=props.pageActive;
 
   return (
+   
     <nav className='topnav'>
-      <div className='d-flex main-top-menu justify-content-start'>
+      
+      <div className={closeMenu === false ? "d-flex main-top-menu justify-content-start" : "main-top-menu-change d-flex justify-content-start"}>
         <div onClick={handleCloseMenu} className=''>
-          {closeMenu == false ? <FontAwesomeIcon icon="fa-solid fa-bars" />
+          {closeMenu == false ? <FontAwesomeIcon icon="fa-solid fa-bar" />
           : <FontAwesomeIcon icon="coffee" />}
           
         </div>
@@ -36,7 +39,7 @@ const pageactive = props.pageActive;
         <div className='main-top-submenu d-flex'>
           <div className='top-submenu logout' title='Log Out'><BiLogOut/><Link to="/" onClick={logOut}>Logout</Link></div>
         </div>
-        <SideNavBar closeMenu={closeMenu} pageactive={pageactive}/>
+        <SideNavBar closeMenu={closeMenu} pageactive={pageActive}/>
       </div>
       {/* <ul className='topnav_menu '>
          <li className=''>Example Company</li>

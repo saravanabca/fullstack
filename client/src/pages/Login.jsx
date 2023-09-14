@@ -60,38 +60,32 @@ export default function LoginForm() {
         }
 
         setErrors(validationErrors);
-
         return Object.keys(validationErrors).length === 0;
     };
 
     /*=====[ # Travel plan Add Function  # ]=====*/
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-
-        let isFormValid = validateForm();
-        const data ={
-            username : loginData.username,
-            password : loginData.password
+      
+        if (validateForm()) {
+          const data = {
+            username: loginData.username,
+            password: loginData.password
+          };
+      
+          try {
+            await dispatch(login(data)).unwrap();
+            alert(data.username);
+            navigate("/Dashboard");
+            window.location.reload();
+          } catch (error) {
+            alert("Login failed");
+            window.location.reload();
+          }
         }
-        if (isFormValid) {
-            console.log(loginData);
-            //   setLoading(true);
-
-            dispatch(login(data))
-            .unwrap()
-            .then(() => {
-                console.log(login);
-                alert(data.username);
-              navigate("/Dashboard");
-              window.location.reload();
-            })
-            .catch(() => {
-                alert("fail");
-            //   setLoading(false);
-            });
-        }
-    };
+      };
+      
 
     return (
         <>
@@ -102,9 +96,10 @@ export default function LoginForm() {
                             <div className="col-lg-3"></div>
                             <div className="col-lg-6 form-section">
                                 <div className="form-inner">
-                                    <a href="login-25.html" className="logo">
+                                    {/* <a href="login-25.html" className="logo">
                                         <img src="assets/img/logos/logo-2.png" alt="logo" />
-                                    </a>
+                                    </a> */}
+                                    <span>Simple Explore</span>
                                     <h3>Sign Into Your Account</h3>
 
                                     {/* <div className="alert alert-danger alert-dismissible fade show" role="alert">
