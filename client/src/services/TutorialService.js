@@ -12,6 +12,16 @@ const create = (data) => {
   return http.post("/tutorials", data);
 };
 
+// const create = (data) => {
+//   return axios
+//     .post(API_URL + "createtrip", {
+//       data
+//     })
+//     .then((response) => {
+//       return response;
+//     });
+// };
+
 const update = (id, data) => {
   return http.put(`/tutorials/${id}`, data);
 };

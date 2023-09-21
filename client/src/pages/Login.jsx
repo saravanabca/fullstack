@@ -8,8 +8,7 @@ import { login } from "../slices/auth";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 export default function LoginForm() {
     /*=====[ # Declare a State Variable  # ]=====*/
-
-    const [loginData, setLogindata] = useState({
+ const [loginData, setLogindata] = useState({
         username: "",
         password: "",
     });
@@ -85,6 +84,7 @@ export default function LoginForm() {
           }
         }
       };
+   
       
 
     return (
