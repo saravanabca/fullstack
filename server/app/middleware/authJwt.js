@@ -1,9 +1,9 @@
-import { verify } from "jsonwebtoken";
-import { secret } from "../config/auth.config.js";
-import db from "../models";
+const jwt = require("jsonwebtoken");
+const config = require("../config/auth.config.js");
+const db = require("../models");
 const User = db.user;
 
-const verifyToken = (req, res, next) => {
+verifyToken = (req, res, next) => {
   let token = req.session.token;
 
   if (!token) {
@@ -12,24 +12,20 @@ const verifyToken = (req, res, next) => {
     });
   }
 
-  try {
-    verify(token, secret, (err, decoded) => {
-      if (err) {
-        return res.status(401).send({
-          message: "Unauthorized!",
-        });
-      }
-      req.userId = decoded.id;
-      next();
-    });
-  } catch (error) {
-    return res.status(500).send({
-      message: "Unable to verify token!",
-    });
-  }
+  jwt.verify(token,
+             config.secret,
+             (err, decoded) => {
+              if (err) {
+                return res.status(401).send({
+                  message: "Unauthorized!",
+                });
+              }
+              req.userId = decoded.id;
+              next();
+             });
 };
 
-const isAdmin = async (req, res, next) => {
+isAdmin = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();
@@ -50,7 +46,7 @@ const isAdmin = async (req, res, next) => {
   }
 };
 
-const isModerator = async (req, res, next) => {
+isModerator = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();
@@ -71,7 +67,7 @@ const isModerator = async (req, res, next) => {
   }
 };
 
-const isModeratorOrAdmin = async (req, res, next) => {
+isModeratorOrAdmin = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();
@@ -102,4 +98,4 @@ const authJwt = {
   isModerator,
   isModeratorOrAdmin,
 };
-export default authJwt;
+module.exports = authJwt;

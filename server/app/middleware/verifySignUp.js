@@ -1,4 +1,4 @@
-import db from "../models";
+const db = require("../models");
 const ROLES = db.ROLES;
 const User = db.user;
 
@@ -58,4 +58,4 @@ const verifySignUp = {
   checkRolesExisted
 };
 
-export default verifySignUp;
+module.exports = verifySignUp;

@@ -32,6 +32,8 @@ function App() {
       <Route exact path="/addform" element={<AddFormData/>}/>
       <Route path="/updateform" element={<UpdateFormData/>}/>
       <Route exact path="/displaydata" element={<DisplayFormData/>}/>
+      <Route path="/usecallback" element={<UpdateFormData/>}/>
+
     </Routes>
     </BrowserRouter>
     </div>

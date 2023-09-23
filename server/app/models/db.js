@@ -1,11 +1,11 @@
-import { createPool } from "mysql";
-import { HOST, USER, PASSWORD, DB } from "../config/db.config.js";
+const mysql = require("mysql");
+const dbConfig = require("../config/db.config.js");
 
-var connection = createPool({
-  host: HOST,
-  user: USER,
-  password: PASSWORD,
-  database: DB
+var connection = mysql.createPool({
+  host: dbConfig.HOST,
+  user: dbConfig.USER,
+  password: dbConfig.PASSWORD,
+  database: dbConfig.DB
 });
 
-export default connection;
+module.exports = connection;

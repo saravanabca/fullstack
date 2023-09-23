@@ -1,11 +1,28 @@
 
-export const HOST = "localhost";
-export const USER = "root";
-export const PASSWORD = "";
-export const DB = "test";
-export const dialect = "mysql";
-export const pool = {
-  max: 5,
-  min: 0,
-  acquire: 30000,
-  idle: 10000};
+module.exports = {
+  HOST: "localhost",
+  USER: "root",
+  PASSWORD: "",
+  DB: "test",
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
+};
+
+// module.exports = {
+//   HOST: "localhost",
+//   USER: "root",
+//   PASSWORD: "123456",
+//   DB: "testdb",
+//   dialect: "mysql",
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000
+//   }
+// };

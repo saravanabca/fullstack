@@ -6,6 +6,7 @@ import { clearMessage } from "../slices/message";
 import { useDispatch } from "react-redux";
 import { login } from "../slices/auth";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
+import Loader from "../component/main/loader";
 export default function LoginForm() {
     /*=====[ # Declare a State Variable  # ]=====*/
  const [loginData, setLogindata] = useState({
@@ -14,7 +15,12 @@ export default function LoginForm() {
     });
     const [passwordVisible, setPasswordVisible] = useState(false);
     let navigate = useNavigate();
+    const [loderstatus, setLoderstatus] = useState(false);
     // const { message } = useSelector((state) => state.message);
+    const changeLoaderStatus = (value) => {
+        console.log(value);
+        setLoderstatus(value);
+      };
 
     const dispatch = useDispatch();
 
@@ -68,7 +74,7 @@ export default function LoginForm() {
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
-      
+     
         if (validateForm()) {
           const data = {
             username: loginData.username,
@@ -76,13 +82,19 @@ export default function LoginForm() {
           };
       
           try {
+            changeLoaderStatus(true);
             await dispatch(login(data)).unwrap();
-            alert(data);
+            // alert(data);
+            
             navigate("/Dashboard");
             window.location.reload();
           } catch (error) {
-            alert("Login failed");
+            alert(error);
+            console.log(error);
             window.location.reload();
+          }
+          finally{
+            changeLoaderStatus(false);
           }
         }
       };
@@ -91,6 +103,7 @@ export default function LoginForm() {
 
     return (
         <>
+         <Loader loderstatus={loderstatus} />
             <section>
                 <div className="login-25">
                     <div className="container">

@@ -1,52 +1,49 @@
-import express from "express";
-import cors from "cors";
-import cookieSession from "cookie-session";
-import authRoutes from './app/routes/auth.routes.mjs';
-import userRoutes from './app/routes/user.routes.mjs';
-import tutorialRoutes from './app/routes/tutorial.routes.mjs';
-import { sequelize } from "./app/models/index.js";
+const express = require("express");
+const cors = require("cors");
+const cookieSession = require("cookie-session");
 
 const app = express();
 
 app.use(cors());
-const corsOptions = {
-  origin: "http://localhost:3000"
-};
+/* for Angular Client (withCredentials) */
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: ["http://localhost:3000"],
+//   })
+// );
 
 app.use(cors(corsOptions));
 
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
+
+// parse requests of content-type - application/json
 app.use(express.json());
 
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
     name: "Login-Auth",
-    keys: ["COOKIE_SECRET"], // should use an environment variable for secret
+    keys: ["COOKIE_SECRET"], // should use as secret environment variable
     httpOnly: true,
     sameSite: 'strict'
   })
 );
 
-
 // database
-
 const db = require("./app/models");
-const Role = db.role;
-
-// db.sequelize.sync();
-
-import { sequelize } from "./app/models";
 // const Role = db.role;
 
-
-sequelize.sync();
-
+db.sequelize.sync();
 // force: true will drop the table if it already exists
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Database with { force: true }');
-  initial();
-});
+// db.sequelize.sync({force: true}).then(() => {
+//   console.log('Drop and Resync Database with { force: true }');
+//   initial();
+// });
 
 // simple route
 app.get("/", (req, res) => {
@@ -54,39 +51,30 @@ app.get("/", (req, res) => {
 });
 
 // routes
-// routes
-// require("./app/routes/auth.routes").default(app);
-// require("./app/routes/user.routes").default(app);
-// require("./app/routes/tutorial.routes.js").default(app);
-
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/tutorials',tutorialRoutes);
-
-
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
+require("./app/routes/tutorial.routes.js")(app);
+require("./app/routes/form.routes.js")(app);
+// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-
-  // initial(); // You can uncomment and call this function to initialize roles if needed.
-
-  initial();
-
+  // initial();
 });
 
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user",
-  });
+// function initial() {
+//   Role.create({
+//     id: 1,
+//     name: "user",
+//   });
 
-  Role.create({
-    id: 2,
-    name: "moderator",
-  });
+//   Role.create({
+//     id: 2,
+//     name: "moderator",
+//   });
 
-  Role.create({
-    id: 3,
-    name: "admin",
-  });
-}
+//   Role.create({
+//     id: 3,
+//     name: "admin",
+//   });
+// }

@@ -1,25 +1,24 @@
-import { query } from "./db.js";
+const sql = require("./db.js");
 
 // constructor
-class Form {
-    constructor(form) {
-        this.name = form.name;
-        this.email = form.email;
-        this.age = form.age;
-        this.address = form.address;
-    }
-    static create(newTutorial, result) {
-        query("INSERT INTO form SET ?", newTutorial, (err, res) => {
-            if (err) {
-                console.log("error: ", err);
-                result(err, null);
-                return;
-            }
+const Form = function(form) {
+  this.name = form.name;
+  this.email = form.email;
+  this.age = form.age;
+  this.address = form.address;
+};
 
-            console.log("created tutorial: ", { id: res.insertId, ...newTutorial });
-            result(null, { id: res.insertId, ...newTutorial });
-        });
+Form.create = (newTutorial, result) => {
+  sql.query("INSERT INTO form SET ?", newTutorial, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
-}
-export default Form;
 
+    console.log("created tutorial: ", { id: res.insertId, ...newTutorial });
+    // return;
+    result(null, { id: res.insertId, ...newTutorial });
+  });
+};
+module.exports =Form;

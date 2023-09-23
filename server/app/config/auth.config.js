@@ -1,1 +1,3 @@
-export const secret = "login-secret-key";
+module.exports = {
+  secret: "login-secret-key"
+};

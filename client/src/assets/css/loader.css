@@ -1,79 +1,114 @@
 /**
-  * Meetup
+  * rotating-dots
   *
-  * @author jh3y - jheytompkins.com
+  * @author jh3y
 */
-@-webkit-keyframes meetup {
+@-webkit-keyframes rotating-dots {
+    0% {
+        -webkit-transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(0deg);
+        transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(0deg);
+    }
+
+    50%,
+    100% {
+        -webkit-transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(180deg);
+        transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(180deg);
+    }
+}
+
+@keyframes rotating-dots {
+    0% {
+        -webkit-transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(0deg);
+        transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(0deg);
+    }
+
+    50%,
+    100% {
+        -webkit-transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(180deg);
+        transform: translate(calc(var(--translate) * 1%), 0) rotateY(calc(var(--rotation, 0) * 1deg)) rotate(180deg);
+    }
+}
+
+@-webkit-keyframes rotating-dots-flash {
 
     0%,
-    100% {
-        -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
-        transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
+    50% {
+        visibility: visible;
     }
 
-    50% {
-        -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
-        transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
+    50.0001%,
+    100% {
+        visibility: hidden;
     }
 }
 
-@keyframes meetup {
+@keyframes rotating-dots-flash {
 
     0%,
-    100% {
-        -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
-        transform: rotate(calc(var(--rotation) * 1deg)) translateY(0);
-    }
-
     50% {
-        -webkit-transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
-        transform: rotate(calc(var(--rotation) * 1deg)) translateY(300%);
+        visibility: visible;
+    }
+
+    50.0001%,
+    100% {
+        visibility: hidden;
     }
 }
 
-.meetup {
-    -webkit-animation: spin 1s infinite linear;
-    animation: spin 1s infinite linear;
-    height: 10px;
-    width: 10px;
+.rotating-dots-container {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 100vh; /* Set to the desired height of the container */
+  }
+.rotating-dots {
+    --duration: 1;
+    --size: 20;
+    --primary: #34a853;
+    height: calc(var(--size) * 1px);
+    position: absolute;
+    width: calc(var(--size) * 1px);
+    /* margin:6rem; */
 }
 
-.meetup div {
+.rotating-dots div {
+    -webkit-animation: rotating-dots calc(var(--duration) * 1s) calc(var(--delay, 0) * 1s) infinite;
+    animation: rotating-dots calc(var(--duration) * 1s) calc(var(--delay, 0) * 1s) infinite;
+    height: 100%;
+    position: absolute;
+    -webkit-transform: translate(calc(var(--translate) * 1%), 0);
+    transform: translate(calc(var(--translate) * 1%), 0);
+    width: 100%;
+}
+
+.rotating-dots div:after,
+.rotating-dots div:before {
+    background: var(--primary);
+    border-radius: 100%;
+    content: '';
     height: 100%;
     position: absolute;
     width: 100%;
-    -webkit-animation: meetup 1.25s infinite ease;
-    animation: meetup 1.25s infinite ease;
-    background: var(--primary);
-    border-radius: 100%;
 }
 
-.meetup div:nth-child(1) {
-    --rotation: 90;
+.rotating-dots div:after {
+    -webkit-animation: rotating-dots-flash calc(var(--duration) * 1s) calc(var(--delay, 0) * 1s) infinite steps(2);
+    animation: rotating-dots-flash calc(var(--duration) * 1s) calc(var(--delay, 0) * 1s) infinite steps(2);
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
 }
 
-.meetup div:nth-child(2) {
+.rotating-dots div:before {
+    -webkit-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+}
+
+.rotating-dots div:nth-of-type(1) {
+    --translate: -100;
+}
+
+.rotating-dots div:nth-of-type(2) {
+    --delay: calc((var(--duration) / 2) * -1);
     --rotation: 180;
-}
-
-.meetup div:nth-child(3) {
-    --rotation: 270;
-}
-
-.meetup div:nth-child(4) {
-    --rotation: 360;
-}
-
-@-webkit-keyframes spin {
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes spin {
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+    --translate: 100;
 }

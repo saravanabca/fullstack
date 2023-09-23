@@ -1,7 +1,7 @@
-import { create } from "../models/form.model.js";
+const Form = require("../models/form.model.js");
 
 // Create and Save a new Tutorial
-export function create(req, res) {
+exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -10,20 +10,20 @@ export function create(req, res) {
   }
 
   // Create a Tutorial
-  const form = new Tutorial({
+  const form = new Form({
     name: req.body.name,
     email: req.body.email,
     age: req.body.age,
-    address:req.body.address
+    address : req.body.address
   });
 
   // Save Tutorial in the database
-  create(form, (err, data) => {
+  Form.create(form, (err, data) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Form."
+          err.message || "Some error occurred while creating the Tutorial."
       });
     else res.send(data);
   });
-}
+};

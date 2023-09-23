@@ -1,18 +1,13 @@
-export default (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
+module.exports = (sequelize, Sequelize) => {
+  const User = sequelize.define("users", {
     username: {
-      type: DataTypes.STRING,
-      allowNull: false, // Ensure the username is required
-      unique: true // Ensure the username is unique
+      type: Sequelize.STRING
     },
     email: {
-      type: DataTypes.STRING,
-      allowNull: false, // Ensure the email is required
-      unique: true // Ensure the email is unique
+      type: Sequelize.STRING
     },
     password: {
-      type: DataTypes.STRING,
-      allowNull: false // Ensure the password is required
+      type: Sequelize.STRING
     }
   });
 
