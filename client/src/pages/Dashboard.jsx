@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from "react";
 import TopNavBar from "../component/Global/TopNavBar";
-import Card from "../component/main/card"
+import Addformdetails from "../services/api"
 // import TextField from '@mui/material/TextField';
 import Footer from "../component/Global/Footer"
 import "../assets/css/form.css"
@@ -74,17 +74,14 @@ export default function Dashboard() {
       //   password: formData.password
       // };
       console.log(formData);
-      return;
-      try {
-        await CreateTripApi.create(formData)
-        .then((response) => {
-          console.log(response);
-          navigate("/viewplan");
-        })
-      } catch (error) {
-        alert("Login failed");
-        window.location.reload();
-      }
+      // return;
+      Addformdetails.addformdata(formData)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
     }
   };
 

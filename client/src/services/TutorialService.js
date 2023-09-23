@@ -22,6 +22,7 @@ const create = (data) => {
 //     });
 // };
 
+
 const update = (id, data) => {
   return http.put(`/tutorials/${id}`, data);
 };

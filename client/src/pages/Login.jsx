@@ -75,7 +75,7 @@ export default function LoginForm() {
       
           try {
             await dispatch(login(data)).unwrap();
-            alert(data.username);
+            alert(data);
             navigate("/Dashboard");
             window.location.reload();
           } catch (error) {

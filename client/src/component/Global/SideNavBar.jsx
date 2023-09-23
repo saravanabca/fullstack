@@ -35,7 +35,7 @@ export default function SideNavBar(props) {
     }
   }, [currentUser]);
 
-  console.log(props.closeMenu);
+  // console.log(props.closeMenu);
 
 
 
