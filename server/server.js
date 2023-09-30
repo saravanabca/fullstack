@@ -36,14 +36,14 @@ app.use(
 
 // database
 const db = require("./app/models");
-// const Role = db.role;
+const Role = db.role;
 
-db.sequelize.sync();
+// db.sequelize.sync();
 // force: true will drop the table if it already exists
-// db.sequelize.sync({force: true}).then(() => {
-//   console.log('Drop and Resync Database with { force: true }');
-//   initial();
-// });
+db.sequelize.sync({force: true}).then(() => {
+  console.log('Drop and Resync Database with { force: true }');
+  initial();
+});
 
 // simple route
 app.get("/", (req, res) => {
@@ -58,22 +58,22 @@ require("./app/routes/tutorial.routes.js")(app);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-  // initial();
+  initial();
 });
 
-// function initial() {
-//   Role.create({
-//     id: 1,
-//     name: "user",
-//   });
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user",
+  });
 
-//   Role.create({
-//     id: 2,
-//     name: "moderator",
-//   });
+  Role.create({
+    id: 2,
+    name: "moderator",
+  });
 
-//   Role.create({
-//     id: 3,
-//     name: "admin",
-//   });
-// }
+  Role.create({
+    id: 3,
+    name: "admin",
+  });
+}
