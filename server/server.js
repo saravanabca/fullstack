@@ -1,7 +1,9 @@
-const express = require("express");
-const cors = require("cors");
-const cookieSession = require("cookie-session");
-
+import express, { json, urlencoded } from "express";
+import cors from "cors";
+import cookieSession from "cookie-session";
+import authRoutes from './app/routes/auth.routes.mjs';
+import userRoutes from './app/routes/user.routes.mjs';
+import tutorialRoutes from './app/routes/tutorial.routes.mjs';
 const app = express();
 
 app.use(cors());
@@ -20,10 +22,10 @@ var corsOptions = {
 };
 
 // parse requests of content-type - application/json
-app.use(express.json());
+app.use(json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
@@ -35,10 +37,17 @@ app.use(
 );
 
 // database
+<<<<<<< HEAD
 const db = require("./app/models");
 const Role = db.role;
 
 // db.sequelize.sync();
+=======
+import { sequelize } from "./app/models";
+// const Role = db.role;
+
+sequelize.sync();
+>>>>>>> 9c0d04f459c955e97ddd79aca8de303f418f8ca8
 // force: true will drop the table if it already exists
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
@@ -51,9 +60,17 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("./app/routes/auth.routes")(app);
-require("./app/routes/user.routes")(app);
-require("./app/routes/tutorial.routes.js")(app);
+// routes
+// require("./app/routes/auth.routes").default(app);
+// require("./app/routes/user.routes").default(app);
+// require("./app/routes/tutorial.routes.js").default(app);
+
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/tutorials',tutorialRoutes);
+
+
+// require("./app/routes/form.routes.js")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

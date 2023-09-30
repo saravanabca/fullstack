@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import TutorialDataService from "../services/TutorialService";
-import SideNavBar from "../component/Global/SideNavBar";
-import Example from "../component/Global/Example";
 import TopNavBar from "../component/Global/TopNavBar"; 
 const AddTutorial = () => {
   const initialTutorialState = {
@@ -48,9 +46,9 @@ const AddTutorial = () => {
 
   return (
 <>
-     <TopNavBar/>
+     <TopNavBar pageActive="addform"/>
      {/* <SideNavBar/> */}
-    <div className="submit-form dashboard">
+    <div className="submit-form main-page">
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>

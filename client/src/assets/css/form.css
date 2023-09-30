@@ -1,0 +1,39 @@
+
+.main-page .side-app {
+    padding: 0px 30px 0 10px;
+}
+.page-head-title{
+    font-weight: 500;
+}
+.card{
+    /* width: 95%; */
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card-header{
+    background: none;
+    padding: 1rem 2rem 0rem 3rem;
+     display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    border-bottom: 1px solid #eaedf1;
+}
+.input-group{
+    margin-top: 20px;
+    padding: 1rem 2rem 2rem 3rem;
+}
+
+.input-box:focus{
+    border-color: #eaedf1 !important;
+}
+.ml-auto{
+    margin-left: auto !important;
+}
+.form-control{
+    box-sizing: border-box;
+}
+.form-control:focus{
+    box-shadow: none;
+    border-color: #438f57;
+}

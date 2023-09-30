@@ -4,8 +4,8 @@
   "description": "concurrenly",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
-    "server": "node server/server.js",
+    "start": "nodemon server/server.js",
+    "server": "nodemon server/server.js",
     "client": "npm start --prefix client ",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.1"
   }
 }

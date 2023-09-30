@@ -1,12 +1,16 @@
 
 body{
 overflow-x: hidden;
+background-color: #f2f3f9;
 }
 
 .list .action {
   cursor: pointer;
 }
-
+a{
+  color: black;
+  text-decoration: none;
+}
 
 
 .submit-form {
@@ -19,11 +23,12 @@ overflow-x: hidden;
   margin: auto;
 }
 @media (min-width:768px){
-  .dashboard{
-    padding-top: 2rem;
-    margin-left: 18rem;
+  .main-page{
+    padding-top: 5rem;
+    margin-left: 16rem;
   }
 }
+
 .text-danger{
   color: red;
 }

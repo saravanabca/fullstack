@@ -7,6 +7,7 @@ import Social from "../component/Login/Social";
 import { Link,useNavigate } from "react-router-dom";
 import { register } from "../slices/auth";
 import { clearMessage } from "../slices/message";
+import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 export default function RegisterForm() {
     const [signupdata, setSignupdata] = useState({
@@ -14,7 +15,7 @@ export default function RegisterForm() {
         email: "",
         password: "",
     });
-    // const [passwordVisible, setPasswordVisible] = useState(false);
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
@@ -41,9 +42,9 @@ export default function RegisterForm() {
         }));
     };
 
-    // const togglePasswordVisibility = () => {
-    //     setPasswordVisible(!passwordVisible);
-    // };
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
 
     /*=====[ # Validation # ]=====*/
 
@@ -185,7 +186,7 @@ export default function RegisterForm() {
                                         <div className="form-group clearfix position-relative password-wrapper">
                                             <input
                                                 name="password"
-                                                type="password"
+                                                type={passwordVisible ? 'text' : 'password'}
                                                 className="form-control"
                                                 autoComplete="off"
                                                 placeholder="Password"
@@ -193,7 +194,11 @@ export default function RegisterForm() {
                                                 value={signupdata.password}
                                                 onChange={handleChange}
                                             />
-                                            <i className="fa fa-eye password-indicator"></i>
+                                           <span onClick={togglePasswordVisibility}>
+                                                {passwordVisible ? <AiFillEye className="password-indicator"/> :
+                                                <AiFillEyeInvisible className="password-indicator"/>
+                                                }
+                                            </span>
                                             <span className="text-danger">{errors.password}</span>
                                         </div>
 

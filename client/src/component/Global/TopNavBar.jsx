@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { logout } from "../../slices/auth";
 import SideNavBar from "../Global/SideNavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-function Navbar() {
+import {BiLogOut} from "react-icons/bi";
+function Navbar(props) { 
 
   const dispatch = useDispatch();
 
@@ -22,16 +23,23 @@ function Navbar() {
     // console.log(!closeMenu);
   };
 
+const pageActive=props.pageActive;
+
   return (
+   
     <nav className='topnav'>
-      <div className='d-flex main-top-menu justify-content-start'>
+      
+      <div className={closeMenu === false ? "d-flex main-top-menu justify-content-start" : "main-top-menu-change d-flex justify-content-start"}>
         <div onClick={handleCloseMenu} className=''>
-          <FontAwesomeIcon icon="fa-solid fa-bars" />
+          {closeMenu == false ? <FontAwesomeIcon icon="fa-solid fa-bar" />
+          : <FontAwesomeIcon icon="coffee" />}
+          
         </div>
+
         <div className='main-top-submenu d-flex'>
-          <div className='top-submenu logout' title='Log Out'><Link to="/" onClick={logOut}>LogOut</Link></div>
+          <div className='top-submenu logout' title='Log Out'><BiLogOut/><Link to="/" onClick={logOut}>Logout</Link></div>
         </div>
-        <SideNavBar closeMenu={closeMenu} />
+        <SideNavBar closeMenu={closeMenu} pageactive={pageActive}/>
       </div>
       {/* <ul className='topnav_menu '>
          <li className=''>Example Company</li>

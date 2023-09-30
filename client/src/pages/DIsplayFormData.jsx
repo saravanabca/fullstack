@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import TutorialDataService from "../services/TutorialService";
 import { useTable } from "react-table";
-import SideNavBar from "../component/Global/SideNavBar";
 import TopNavBar from "../component/Global/TopNavBar"; 
 
 const TutorialsList = (props) => {
@@ -132,9 +131,9 @@ const TutorialsList = (props) => {
 
   return (
     <>
-    <TopNavBar/>
+    <TopNavBar pageActive="displaydata"/>
     {/* <SideNavBar/> */}
-    <div className="list row dashboard">
+    <div className="list row main-page">
       <div className="col-md-8">
         <div className="input-group mb-3">
           <input
