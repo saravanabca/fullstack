@@ -1,7 +1,7 @@
-const Tutorial = require("../models/tutorial.model.js");
+import Tutorial from "../models/tutorial.model.js";
 
 // Create and Save a new Tutorial
-exports.create = (req, res) => {
+export function create(req, res) {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -25,10 +25,10 @@ exports.create = (req, res) => {
       });
     else res.send(data);
   });
-};
+}
 
 // Retrieve all Tutorials from the database (with condition).
-exports.findAll = (req, res) => {
+export function findAll(req, res) {
   const title = req.query.title;
 
   Tutorial.getAll(title, (err, data) => {
@@ -39,10 +39,10 @@ exports.findAll = (req, res) => {
       });
     else res.send(data);
   });
-};
+}
 
 // Find a single Tutorial by Id
-exports.findOne = (req, res) => {
+export function findOne(req, res) {
   Tutorial.findById(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -56,10 +56,10 @@ exports.findOne = (req, res) => {
       }
     } else res.send(data);
   });
-};
+}
 
 // find all published Tutorials
-exports.findAllPublished = (req, res) => {
+export function findAllPublished(req, res) {
   Tutorial.getAllPublished((err, data) => {
     if (err)
       res.status(500).send({
@@ -68,10 +68,10 @@ exports.findAllPublished = (req, res) => {
       });
     else res.send(data);
   });
-};
+}
 
 // Update a Tutorial identified by the id in the request
-exports.update = (req, res) => {
+export function update(req, res) {
   // Validate Request
   if (!req.body) {
     res.status(400).send({
@@ -98,10 +98,10 @@ exports.update = (req, res) => {
       } else res.send(data);
     }
   );
-};
+}
 
 // Delete a Tutorial with the specified id in the request
-exports.delete = (req, res) => {
+const _delete = (req, res) => {
   Tutorial.remove(req.params.id, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
@@ -116,9 +116,10 @@ exports.delete = (req, res) => {
     } else res.send({ message: `Tutorial was deleted successfully!` });
   });
 };
+export { _delete as delete };
 
 // Delete all Tutorials from the database.
-exports.deleteAll = (req, res) => {
+export function deleteAll(req, res) {
   Tutorial.removeAll((err, data) => {
     if (err)
       res.status(500).send({
@@ -127,4 +128,4 @@ exports.deleteAll = (req, res) => {
       });
     else res.send({ message: `All Tutorials were deleted successfully!` });
   });
-};
+}

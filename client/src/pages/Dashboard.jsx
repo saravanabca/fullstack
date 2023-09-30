@@ -75,7 +75,7 @@ export default function Dashboard() {
       // };
       console.log(formData);
       // return;
-      Addformdetails.addformdata(formData)
+      await Addformdetails.addformdata(formData)
       .then(response => {
         console.log(response.data);
       })
@@ -84,8 +84,6 @@ export default function Dashboard() {
       });
     }
   };
-
-
 
   return (
     <>

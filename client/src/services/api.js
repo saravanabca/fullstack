@@ -8,10 +8,7 @@ const API_URL = "http://localhost:8080/api";
 // };
 
 const addformdata = async (data) => {
-  const response = await axios
-        .post(API_URL + "adddorm", {
-            data
-        });
+  const response = await axios.post(API_URL + "adddorm", {data});
     return response;
 };
 
