@@ -28,21 +28,20 @@ app.use(
   })
 );
 
-<<<<<<< HEAD
-=======
+
 // database
-<<<<<<< HEAD
+
 const db = require("./app/models");
 const Role = db.role;
 
 // db.sequelize.sync();
-=======
+
 import { sequelize } from "./app/models";
 // const Role = db.role;
->>>>>>> 4fdff2467793352744095bd7599e32d6782180e2
+
 
 sequelize.sync();
->>>>>>> 9c0d04f459c955e97ddd79aca8de303f418f8ca8
+
 // force: true will drop the table if it already exists
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
@@ -68,11 +67,11 @@ app.use('/api/tutorials',tutorialRoutes);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-<<<<<<< HEAD
+
   // initial(); // You can uncomment and call this function to initialize roles if needed.
-=======
+
   initial();
->>>>>>> 4fdff2467793352744095bd7599e32d6782180e2
+
 });
 
 function initial() {
