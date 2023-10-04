@@ -13,26 +13,23 @@ const register = (username, email, password) => {
   });
 };
 
-const login = (username, password) => {
-  return axios.post(API_URL + "signin", {
-      username,
-      password,
-    })
-    .then((response) => {
-      if (response.data.username) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-      console.log(response);
-      return response.data;
-    });
+const login = async (username, password) => {
+  const response = await axios.post(API_URL + "signin", {
+    username,
+    password,
+  });
+  if (response.data.username) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  console.log(response);
+  return response.data;
 };
 
-const logout = () => {
+const logout = async () => {
   localStorage.removeItem("user");
-  return axios.post(API_URL + "signout").then((response) => {
-    console.log(response);
-    return response.data;
-  });
+  const response = await axios.post(API_URL + "signout");
+  console.log(response);
+  return response.data;
 };
 
 const getCurrentUser = () => {

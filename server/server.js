@@ -1,44 +1,33 @@
-import express, { json, urlencoded } from "express";
+import express from "express";
 import cors from "cors";
 import cookieSession from "cookie-session";
 import authRoutes from './app/routes/auth.routes.mjs';
 import userRoutes from './app/routes/user.routes.mjs';
 import tutorialRoutes from './app/routes/tutorial.routes.mjs';
+import { sequelize } from "./app/models/index.js";
+
 const app = express();
 
 app.use(cors());
-/* for Angular Client (withCredentials) */
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: ["http://localhost:3000"],
-//   })
-// );
-
-app.use(cors(corsOptions));
-
-var corsOptions = {
+const corsOptions = {
   origin: "http://localhost:3000"
 };
 
-// parse requests of content-type - application/json
-app.use(json());
+app.use(cors(corsOptions));
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
     name: "Login-Auth",
-    keys: ["COOKIE_SECRET"], // should use as secret environment variable
+    keys: ["COOKIE_SECRET"], // should use an environment variable for secret
     httpOnly: true,
     sameSite: 'strict'
   })
 );
 
-// database
-import { sequelize } from "./app/models";
-// const Role = db.role;
 
 sequelize.sync();
 // force: true will drop the table if it already exists
@@ -63,12 +52,10 @@ app.use('/api/users', userRoutes);
 app.use('/api/tutorials',tutorialRoutes);
 
 
-// require("./app/routes/form.routes.js")(app);
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
-  // initial();
+  // initial(); // You can uncomment and call this function to initialize roles if needed.
 });
 
 // function initial() {

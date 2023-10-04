@@ -1,25 +1,25 @@
-import { verifySignUp } from "../middleware";
+import { verifySignUp } from "../middleware/index.js";
 import { signup, signin, signout } from "../controllers/auth.controller";
+import express from 'express';
 
-export default function(app) {
-  app.use(function(req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, Content-Type, Accept"
-    );
-    next();
-  });
+const router = express.Router(); // Create an instance of express.Router()
 
-  app.post(
-    "/api/auth/signup",
-    [
-      verifySignUp.checkDuplicateUsernameOrEmail,
-      verifySignUp.checkRolesExisted
-    ],
-    signup
-  );
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
+  next();
+});
 
-  app.post("/api/auth/signin", signin);
+router.post(
+  "/signup",
+  [
+    verifySignUp.checkDuplicateUsernameOrEmail,
+    verifySignUp.checkRolesExisted
+  ],
+  signup
+);
 
-  app.post("/api/auth/signout", signout);
-};
+router.post("/signin", signin);
+
+router.post("/signout", signout);
+
+export default router; // Export the router instance

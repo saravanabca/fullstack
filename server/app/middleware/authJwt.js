@@ -3,7 +3,7 @@ import { secret } from "../config/auth.config.js";
 import db from "../models";
 const User = db.user;
 
-verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   let token = req.session.token;
 
   if (!token) {
@@ -12,20 +12,24 @@ verifyToken = (req, res, next) => {
     });
   }
 
-  verify(token,
-             secret,
-             (err, decoded) => {
-              if (err) {
-                return res.status(401).send({
-                  message: "Unauthorized!",
-                });
-              }
-              req.userId = decoded.id;
-              next();
-             });
+  try {
+    verify(token, secret, (err, decoded) => {
+      if (err) {
+        return res.status(401).send({
+          message: "Unauthorized!",
+        });
+      }
+      req.userId = decoded.id;
+      next();
+    });
+  } catch (error) {
+    return res.status(500).send({
+      message: "Unable to verify token!",
+    });
+  }
 };
 
-isAdmin = async (req, res, next) => {
+const isAdmin = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();
@@ -46,7 +50,7 @@ isAdmin = async (req, res, next) => {
   }
 };
 
-isModerator = async (req, res, next) => {
+const isModerator = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();
@@ -67,7 +71,7 @@ isModerator = async (req, res, next) => {
   }
 };
 
-isModeratorOrAdmin = async (req, res, next) => {
+const isModeratorOrAdmin = async (req, res, next) => {
   try {
     const user = await User.findByPk(req.userId);
     const roles = await user.getRoles();

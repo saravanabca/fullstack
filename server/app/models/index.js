@@ -2,7 +2,8 @@ import { DB, USER, PASSWORD, HOST, dialect as _dialect, pool as _pool } from "..
 import { initUserModel, User } from "../models/user.model.js";
 import { initRoleModel, Role } from "../models/role.model.js";
 
-import Sequelize from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
+
 const sequelize = new Sequelize(
   DB,
   USER,
@@ -30,7 +31,7 @@ db.sequelize = sequelize;
 // db.user = require("../models/user.model.js")(sequelize, Sequelize);
 // db.role = require("../models/role.model.js")(sequelize, Sequelize);
 
-db.user = User;
+db.user = User(sequelize, DataTypes);
 db.role = Role;
 
 db.role.belongsToMany(db.user, {

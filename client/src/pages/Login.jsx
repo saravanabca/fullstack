@@ -59,7 +59,9 @@ export default function LoginForm() {
         }
 
         setErrors(validationErrors);
+
         return Object.keys(validationErrors).length === 0;
+        
     };
 
     /*=====[ # Travel plan Add Function  # ]=====*/
