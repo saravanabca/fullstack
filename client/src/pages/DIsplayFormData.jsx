@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import TutorialDataService from "../services/TutorialService";
 import { useTable } from "react-table";
 import TopNavBar from "../component/Global/TopNavBar";
+import Footer from "../component/Global/Footer"
 
 const TutorialsList = (props) => {
   const [tutorials, setTutorials] = useState([]);
@@ -12,7 +13,7 @@ const TutorialsList = (props) => {
 
   useEffect(() => {
     retrieveTutorials();
-  }, []);
+  },[]);
 
   const onChangeSearchTitle = (e) => {
     const searchTitle = e.target.value;
@@ -193,6 +194,7 @@ const TutorialsList = (props) => {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

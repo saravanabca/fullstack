@@ -25,7 +25,6 @@ export default function ForgotPassword() {
             validationErrors.email = "Email can not be empty!";
         }
        
-
         setErrors(validationErrors);
 
         return Object.keys(validationErrors).length === 0;

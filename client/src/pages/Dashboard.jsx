@@ -1,38 +1,39 @@
-import { React,useContext,createContext} from "react";
+import { React } from "react";
 import TopNavBar from "../component/Global/TopNavBar";
 import Loader from "../component/main/loader";
-import Footer from "../component/Global/Footer"
+import Footer from "../component/Global/Footer";
+import {useTheme} from '../services/ThemeContext.js';
+
 export default function Dashboard() {
 
-//  usecontext
+const { isDarkMode, toggleTheme } = useTheme();
 
-// const Themecontext = React.creacteContext("dark");
-// function button (){
-//   retutn <Themecont
-// }
-const Themecontext =createContext();
+const themeClass = isDarkMode ? 'dark' : 'light';
+const handleCopy = (event) => {
+  console.log(event);
+  // Prevent default behavior to avoid copying to clipboard by default
+  event.preventDefault();
 
-export const useTheme = ()=> {
-  return useContext(Themecontext);
+  // Get the text to be copied
+  const text = 'Text you want to copy to clipboard';
+
+  // Copy text to the clipboard
+  event.clipboardData.setData('text/plain', text);
+
+  // Log that text was copied (optional)
+  console.log('Text has been copied to the clipboard:', text);
 };
-
-export const Themprovider = ({ children}) =>
-{
-  const [isDarkMode,setIsDarkMode] = useState(false);
-  const togglTheme = () => {
-    setIsDarkMode((prev) => !prev);
-  }
-};
-
-  return (
+return (
     <>
       {/* <Loader loderstatus={loderstatus} /> */}
       <TopNavBar pageActive="Dashboard" />
       <div className="main-page">
 
-       <section>
-      <p></p>
-       </section>
+      <header >
+        <h1 className={`header ${themeClass}`}>My App</h1>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+        <button onCopyCapture={handleCopy} style={{ cursor: 'pointer' }}>Copt Text</button>
+      </header>
 
       </div>
       <Footer />

@@ -166,7 +166,8 @@ export default function AddFormData() {
 
         </section>
 
-      </div><Footer />
+      </div>
+      <Footer />
     </>
 
   );
