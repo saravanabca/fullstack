@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import TutorialDataService from "../services/TutorialService";
 import { useTable } from "react-table";
-import TopNavBar from "../component/Global/TopNavBar";
-import Footer from "../component/Global/Footer"
+import TopNavBar from "../component/main/TopNavBar";
+import Footer from "../component/main/Footer"
 
 const TutorialsList = (props) => {
   const [tutorials, setTutorials] = useState([]);

@@ -1,7 +1,4 @@
 import { React } from "react";
-import TopNavBar from "../component/Global/TopNavBar";
-
-import Footer from "../component/Global/Footer";
 
 
 export default function Pagenotfount() {

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import '../../assets/css/TopNavBar.css'
 import { Link } from 'react-router-dom';
 import { logout } from "../../slices/auth";
-import SideNavBar from "../Global/SideNavBar";
+import SideNavBar from "../main/SideNavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {BiLogOut} from "react-icons/bi";
 function Navbar(props) { 

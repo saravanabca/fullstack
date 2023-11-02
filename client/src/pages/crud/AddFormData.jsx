@@ -1,10 +1,11 @@
 import { React, useState, useEffect, useRef } from "react";
-import TopNavBar from "../component/Global/TopNavBar";
-import Addformdetails from "../services/api";
-import Loader from "../component/main/loader";
+import TopNavBar from "../../component/main/TopNavBar";
+import Addformdetails from "../../services/api";
+import Loader from "../../component/main/Loader";
 // import TextField from '@mui/material/TextField';
-import Footer from "../component/Global/Footer"
-import "../assets/css/form.css"
+import Footer from "../../component/main/Footer"
+import "../../assets/css/addformdata.css"
+
 export default function AddFormData() {
 
   const [formData, setFormData] = useState(new FormData());

@@ -1,26 +1,27 @@
 import React,{useState, useEffect } from "react";
-import "../assets/css/Login.css";
+import "../../assets/css/Login.css";
 import { useDispatch, useSelector } from "react-redux";
 // import { Navigate, useNavigate } from "react-router-dom";
 // import fooderimage from "./images/img-6.png";
-import Social from "../component/Login/Social";
+import Social from "../../component/login/Social";
 import { Link,useNavigate } from "react-router-dom";
-import { register } from "../slices/auth";
-import { clearMessage } from "../slices/message";
+import { register } from "../../slices/auth";
+import { clearMessage } from "../../slices/message";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 
 export default function RegisterForm() {
+
     const [signupdata, setSignupdata] = useState({
         username: "",
         email: "",
         password: "",
     });
+
     const [passwordVisible, setPasswordVisible] = useState(false);
 
     const [errors, setErrors] = useState({});
     let navigate = useNavigate();
     const { message } = useSelector((state) => state.message);
-
     const dispatch = useDispatch();
     const [successful, setSuccessful] = useState(false);
 
@@ -88,17 +89,7 @@ export default function RegisterForm() {
           console.log(data);
         if (isFormValid) {
             console.log(signupdata);
-            // return;
-            //   setLoading(true);
-
-            //   CreateTripApi.create(planDetails)
-            //     .then((response) => {
-            //       console.log(response);
-            //       navigate("/viewplan");
-            //     })
-            //     .catch((e) => {
-            //       console.log(e);
-            //     });
+            
             setSuccessful(false);
 
             dispatch(register(data))

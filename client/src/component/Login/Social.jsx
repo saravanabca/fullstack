@@ -3,7 +3,8 @@ import React from "react";
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 export default function Social(props) {
-    const handleLogout = async () => {
+
+    const handleLogout = async () => { //goggle logout function
         try {
           googleLogout();
           console.log('User logged out successfully');
@@ -13,6 +14,7 @@ export default function Social(props) {
           // Handle errors or failed logout attempts
         }
     };
+
     return (
         <>
             <section>
@@ -21,6 +23,7 @@ export default function Social(props) {
                         <div className="tooltip">Facebook</div>
                         <span><BiLogoFacebookSquare className="social-icon"/></span>
                     </div> */}
+
                     {/* 
                     <div className="icon social-icon">
                         <div className="tooltip ">Google</div>
@@ -41,14 +44,16 @@ export default function Social(props) {
                                 console.log('Login Failed');
                             }}
                         />
+                        
                     </GoogleOAuthProvider>
-                    <button onClick={handleLogout}>logout</button>
+
+                    <button onClick={handleLogout}>logout</button> 
+
                     {/* <div className="icon github mr-0">
                         <div className="tooltip">Linkedin</div>
                         <span><i className="fa fa-linkedin"></i></span>
                     </div> */}
                 </div>
-
             </section>
         </>
     );

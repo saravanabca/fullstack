@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TutorialDataService from "../services/TutorialService";
-import SideNavBar from "../component/Global/SideNavBar";
-import TopNavBar from "../component/Global/TopNavBar"; 
+import SideNavBar from "../component/main/SideNavBar";
+import TopNavBar from "../component/main/TopNavBar"; 
 const Tutorial = props => {
   const initialTutorialState = {
     id: null,

@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
-import "../assets/css/Login.css";
-import Social from "../component/Login/Social"
+import "../../assets/css/Login.css";
+import Social from "../../component/login/Social"
 // import fooderimage from "./images/img-6.png";
 import { Link } from "react-router-dom";
 
@@ -37,6 +37,7 @@ export default function ForgotPassword() {
             [name]: value,
         }));
     };
+
     const handleForgetSubmit = (e) => {
         e.preventDefault();
 
@@ -63,6 +64,7 @@ export default function ForgotPassword() {
             // });
         } 
     };
+    
     return (
         <>
             <section>

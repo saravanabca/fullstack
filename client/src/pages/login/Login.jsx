@@ -1,18 +1,19 @@
 import { React, useState, useEffect } from "react";
-import "../assets/css/Login.css";
-import Social from "../component/Login/Social";
+import "../../assets/css/Login.css";
+import Social from "../../component/login/Social";
 import { Link, useNavigate } from "react-router-dom";
-import { clearMessage } from "../slices/message";
+import { clearMessage } from "../../slices/message";
 import { useDispatch } from "react-redux";
-import { login } from "../slices/auth";
+import { login } from "../../slices/auth";
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
-import Loader from "../component/main/loader";
+import Loader from "../../component/main/Loader";
 export default function LoginForm() {
     /*=====[ # Declare a State Variable  # ]=====*/
  const [loginData, setLogindata] = useState({
         username: "",
         password: "",
     });
+    
     const [passwordVisible, setPasswordVisible] = useState(false);
     let navigate = useNavigate();
     const [loderstatus, setLoderstatus] = useState(false);

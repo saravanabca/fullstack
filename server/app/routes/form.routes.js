@@ -1,14 +1,23 @@
 module.exports = app => {
-    const addform = require("../controllers/form.controller.js");
+    const formdata = require("../controllers/form.controller.js");
   
     var router = require("express").Router();
   
     // Create a new Tutorial
-    router.post("/", addform.create);
+    router.post("/", formdata.create);
   
-    // Retrieve all Tutorials
-    // router.get("/", addform.findAll);
+    // Retrieve all formdata
+    router.get("/", formdata.findAll);
+
+    router.get("/:id", formdata.findOne);
+
+    // Update a Tutorial with id
+    router.put("/:id", formdata.update);
   
-    app.use('/api/addform', router);
+    // Delete a Tutorial with id
+    router.delete("/:id", formdata.delete);
+  
+  
+    app.use('/api/formdata', router);
   };
   
