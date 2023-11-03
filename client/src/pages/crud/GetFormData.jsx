@@ -17,7 +17,7 @@ const GetFormData = () => {
 
   function getAllDetails(){
     Formapi.getAll()
-    .then(response => {
+    .then(response => { 
       SetGetData(response.data);
     })
     .catch(e => {
@@ -29,9 +29,10 @@ const GetFormData = () => {
     // alert(id);
     Formapi.get(id)
     .then(response => {
+      console.log(response);
         SetShowModel(response.data);
         // alert(response.data);
-        return;
+        // return;
     })
     .catch(e => {
       console.log(e);
@@ -59,7 +60,7 @@ const GetFormData = () => {
       <div className="mainview main-page">
 
         <div className="addNewPlan text-end mb-3">
-          <Link to="addformdata" className="btn btn-primary">Add Data</Link>
+          <Link to="/addformdata" className="btn btn-primary">Add Data</Link>
         </div>
         <table className="table">
             <tr>
@@ -78,7 +79,7 @@ const GetFormData = () => {
               :
               getData.map((data)=>{
                 return(
-                  <tr key={data.formid}>
+                  <tr key={data.form_id}>
                     <td>{ data.name }</td>
                     <td>{ data.email }</td>
                     <td>{ data.age }</td>

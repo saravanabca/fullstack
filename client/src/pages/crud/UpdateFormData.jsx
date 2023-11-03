@@ -31,7 +31,8 @@ export default function UpdateFormData({ show_model, handle_close }) {
   useEffect(() => {
     if (show_model != 'hide') {
       setShow(true);
-      setPlanDetails(show_model.data);
+      setPlanDetails(show_model);
+      console.log((show_model));
     }
   }, [show_model]);
 
@@ -81,7 +82,7 @@ export default function UpdateFormData({ show_model, handle_close }) {
     if (isFormValid) {
       setLoading(true);
 
-      Formapi.edit(planDetails, show_model.id)
+      Formapi.edit(planDetails, show_model.form_id)
         .then(response => {
           setLoading(false);
           handleClose();
@@ -109,7 +110,7 @@ export default function UpdateFormData({ show_model, handle_close }) {
             name="name"
             id="name"
             placeholder="Enter the destination!"
-            value={planDetails.destination}
+            value={planDetails.name}
             onChange={handleChange}
           />
           <span className="text-danger">{errors.name}</span>

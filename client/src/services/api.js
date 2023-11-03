@@ -28,7 +28,7 @@ const getAll = async () => {
 
 const get = async (id) => {
   //   alert(data);
-  const response = await axios.get(API_URL + "formdata/"+id);
+  const response = await axios.get(API_URL + "formdata/" + id);
   console.log(response);
   return response;
 };
