@@ -32,3 +32,6 @@ a{
 .text-danger{
   color: red;
 }
+.m-pointer{
+  cursor: pointer;
+}

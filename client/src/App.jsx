@@ -18,6 +18,7 @@ const Dashboard = loadable(() => import('./pages/Dashboard'))
 // crud
 const AddFormData = loadable(() => import('./pages/crud/AddFormData'))
 const GetFormData = loadable(() => import('./pages/crud/GetFormData'))
+const DataTable = loadable(() => import('./pages/crud/DataTable.jsx'))
 
 
 const Pagenotfont = loadable(() => import('./pages/Pagenotfont'))
@@ -37,6 +38,7 @@ function App() {
 
             <Route exact path="/addformdata" element={<AddFormData />} />
             <Route exact path="/getformdata" element={<GetFormData />} />
+            <Route exact path="/datatable" element={<DataTable />} />
           
             
             <Route path="/*" element={<Pagenotfont />} />

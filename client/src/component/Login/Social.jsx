@@ -1,6 +1,6 @@
 import React from "react";
 // import { FcGoogle } from "react-icons/fc";
-import { GoogleOAuthProvider, GoogleLogin, googleLogout } from '@react-oauth/google';
+import { GoogleOAuthProvider, GoogleLogin, googleLogout,useGoogleOneTapLogin  } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
 export default function Social(props) {
 
@@ -14,6 +14,7 @@ export default function Social(props) {
           // Handle errors or failed logout attempts
         }
     };
+
 
     return (
         <>

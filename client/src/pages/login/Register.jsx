@@ -95,7 +95,7 @@ export default function RegisterForm() {
             dispatch(register(data))
                 .unwrap()
                 .then(() => {
-                    navigate("/addform");
+                    navigate("/addformdata");
                     alert("Succesful");
                     setSuccessful(true);
                 })

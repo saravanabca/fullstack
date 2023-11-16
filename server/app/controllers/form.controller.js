@@ -1,8 +1,9 @@
 const Formdata = require("../models/form.model.js");
-
+const path = require('path');
 // Create and Save a new Formdata
 exports.create = (req, res) => {
   // Validate request
+  console.log(req);
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!"
@@ -10,11 +11,13 @@ exports.create = (req, res) => {
   }
 
   // Create a Formdata
+  const { name, email, age, address, imagefile } = req.body;
   const form = new Formdata({
-    name: req.body.name,
-    email: req.body.email,
-    age: req.body.age,
-    address : req.body.address
+    name,
+    email,
+    age,
+    address,
+    imagefile: path.join(__dirname, '/uploads/', imagefile.name)
   });
 
   // Save Formdata in the database

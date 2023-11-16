@@ -8,94 +8,123 @@ import { Link } from "react-router-dom";
 
 const GetFormData = () => {
 
-  const [ getData, SetGetData ] = useState([]);
-  const [ showModel, SetShowModel ] = useState('hide');
+  const [getData, setGetData] = useState([]);
+  const [showModel, setShowModel] = useState('hide');
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllDetails();
-  },[]);
+  }, []);
 
-  function getAllDetails(){
+  function getAllDetails() {
     Formapi.getAll()
-    .then(response => { 
-      SetGetData(response.data);
-    })
-    .catch(e => {
-      console.log(e);
-    });
+      .then(response => {
+        setGetData(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
-  function editTripDetails(id){
-    // alert(id);
+  function editTripDetails(id) {
     Formapi.get(id)
-    .then(response => {
-      console.log(response);
-        SetShowModel(response.data);
-        // alert(response.data);
-        // return;
-    })
-    .catch(e => {
-      console.log(e);
-    });
+      .then(response => {
+        setShowModel(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
 
-  function handleClose(){
+  function handleClose() {
     getAllDetails();
   }
 
-  function deleteFormData(id){
+  function deleteFormData(id) {
     Formapi.deletedata(id)
-    .then(response => {
+      .then(response => {
         alert("delete success")
-      getAllDetails();
-    })
-    .catch(e => {
-      console.log(e);
-    });
+        getAllDetails();
+      })
+      .catch(e => {
+        console.log(e);
+      });
   }
+
+  // Sort table data
+  const sortTable = (key) => {
+    let direction = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    setSortConfig({ key, direction });
+
+    const sortedData = [...getData].sort((a, b) => {
+      if (a[key] < b[key]) {
+        return direction === 'asc' ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return direction === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
+
+    setGetData(sortedData);
+  };
+
+  // Filter
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredData = getData.filter(data => {
+    return (
+      data.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      data.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      data.age.toString().includes(searchTerm) ||
+      data.address.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
+  const handleSearch = e => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <>
-     <TopNavBar pageActive="getformdata" />
+      <TopNavBar pageActive="getformdata" />
       <div className="mainview main-page">
-
         <div className="addNewPlan text-end mb-3">
+        <input type="text" placeholder="Search..." value={searchTerm} onChange={handleSearch} />
           <Link to="/addformdata" className="btn btn-primary">Add Data</Link>
         </div>
-        <table className="table">
+        <div className="">
+          <table className="table">
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Age</th>
-              <th>Address</th>
+              <th onClick={() => sortTable('name')}>Name</th>
+              <th onClick={() => sortTable('email')}>Email</th>
+              <th onClick={() => sortTable('age')}>Age</th>
+              <th onClick={() => sortTable('address')}>Address</th>
               <th>Status</th>
             </tr>
             {
-              getData.length == 0
-              ?
-                <tr>
-                  <td colspan="4" className="text-center">No Data Found!</td>
-                </tr>
-              :
-              getData.map((data)=>{
-                return(
+              filteredData.length === 0
+                ? <tr><td colSpan="5" className="text-center">No Data Found!</td></tr>
+                : filteredData.map((data) => (
                   <tr key={data.form_id}>
-                    <td>{ data.name }</td>
-                    <td>{ data.email }</td>
-                    <td>{ data.age }</td>
-                    <td>{ data.address }</td>
+                    <td>{data.name}</td>
+                    <td>{data.email}</td>
+                    <td>{data.age}</td>
+                    <td>{data.address}</td>
                     <td className="text-center">
-                      <a onClick={ () => { editTripDetails(data.form_id) } }><i className="fa fa-edit editicon"></i></a>  
-                      <a onClick={ ()=> { deleteFormData(data.form_id) } }><i className="fa fa-trash editicon"></i></a>
+                      <a onClick={() => editTripDetails(data.form_id)}><i className="fa fa-edit editicon"></i></a>
+                      <a onClick={() => deleteFormData(data.form_id)}><i className="fa fa-trash editicon"></i></a>
                     </td>
-                  </tr>)
-              })
+                  </tr>
+                ))
             }
-
-        </table>
-
-        <UpdateFormData show_model={showModel} handle_close={handleClose}/>
-
+          </table>
+        </div>
+        <UpdateFormData show_model={showModel} handle_close={handleClose} />
       </div>
     </>
   );

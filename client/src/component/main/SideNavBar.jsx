@@ -104,11 +104,11 @@ export default function SideNavBar(props) {
               <ul className="slide-menu accordion-drop">
                 <li className="slide" title="Dashboard">
                   <Link
-                    to="#"
-                    className="side-menu__item">
+                    to="/datatable"
+                    className={props.pageactive === 'datatable' ? "active side-menu__item" : "side-menu__item"}>
                     <CgDatabase className="react-icon" />
                     <span className="side-menu__label">
-                      Display Data
+                      Data Table
                     </span>
                   </Link>
                 </li>

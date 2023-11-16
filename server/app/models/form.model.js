@@ -6,6 +6,7 @@ const Formdata = function(form) {
   this.email = form.email;
   this.age = form.age;
   this.address = form.address;
+  this.imagefile = form.imagefile;
 };
 
 Formdata.create = (newFormdata, result) => {
@@ -43,7 +44,7 @@ Formdata.findById = (id, result) => {
 };
 
 Formdata.getAll = (title, result) => {
-  let query = "SELECT * FROM form";
+  let query = "SELECT * FROM form WHERE flag=1";
 
   if (title) {
     query += ` WHERE title LIKE '%${title}%'`;
@@ -87,7 +88,7 @@ Formdata.updateById = (id, Formdata, result) => {
 };
 
 Formdata.remove = (id, result) => {
-  sql.query("DELETE FROM form WHERE form_id = ?", id, (err, res) => {
+  sql.query("UPDATE form SET flag=0 WHERE form_id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

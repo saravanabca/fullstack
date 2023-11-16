@@ -31,6 +31,7 @@ isAdmin = async (req, res, next) => {
     const roles = await user.getRoles();
 
     for (let i = 0; i < roles.length; i++) {
+     
       if (roles[i].name === "admin") {
         return next();
       }

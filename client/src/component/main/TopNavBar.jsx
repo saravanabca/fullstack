@@ -31,8 +31,8 @@ const pageActive=props.pageActive;
       
       <div className={closeMenu === false ? "d-flex main-top-menu justify-content-start" : "main-top-menu-change d-flex justify-content-start"}>
         <div onClick={handleCloseMenu} className=''>
-          {closeMenu == false ? <FontAwesomeIcon icon="fa-solid fa-bar" />
-          : <FontAwesomeIcon icon="coffee" />}
+          {closeMenu == false ? <FontAwesomeIcon icon="fa-solid fa-bars" />
+          : <FontAwesomeIcon icon="fa-solid fa-arrow-right" />}
           
         </div>
 

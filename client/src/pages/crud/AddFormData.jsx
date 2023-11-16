@@ -24,6 +24,7 @@ export default function AddFormData() {
   };
 
   const handleInputChange = (event) => {
+    console.log(event.target[0]);
     const { name, value } = event.target;
     formData.set(name, value);
     setFormData(formData);
@@ -49,7 +50,7 @@ export default function AddFormData() {
 
     let validationErrors = {};
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    changeLoaderStatus(true);
+    // changeLoaderStatus(true);
     if (!formData.get('name')) {
       console.log(!formData.get('name'));
       validationErrors.name = "User name can not be empty!";
@@ -65,6 +66,9 @@ export default function AddFormData() {
     }
     else if (!formData.get('age')) {
       validationErrors.age = "Age can not be empty!";
+    }
+    else if (!formData.get('imagefile')) {
+      validationErrors.imagefile = "Image can not be empty!";
     }
     else if (!formData.get('address')) {
       validationErrors.address = "Adrress can not be empty!";
@@ -89,7 +93,7 @@ export default function AddFormData() {
       //   username: formData.username,
       //   password: formData.password
       // };
-      console.log(formData);
+      console.log(object);
       // return;
       changeLoaderStatus(true);
       await Addformdetails.addformdata(object)
@@ -126,7 +130,7 @@ export default function AddFormData() {
 
                 <div className="input-group">
 
-                  <div className="col-lg-12">
+                  <div className="col-lg-6">
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control" name="name" id="" placeholder="" value={formData.name} onChange={handleInputChange} />
                       <label for="">Name</label>
@@ -134,18 +138,26 @@ export default function AddFormData() {
                       {/* <span>{}</span> */}
                     </div>
                   </div>
-                  <div className="col-lg-12">
+                  <div className="col-lg-6">
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control" name="email" id="" placeholder="" value={formData.email} onChange={handleInputChange} />
                       <label for="">Email</label>
                       <span className="text-danger">{errors.email}</span>
                     </div>
                   </div>
-                  <div className="col-lg-12">
+                  <div className="col-lg-6">
                     <div class="form-floating mb-3">
                       <input type="number" class="form-control" name="age" id="" placeholder="" value={formData.age} onChange={handleInputChange} />
                       <label for="">Age</label>
                       <span className="text-danger">{errors.age}</span>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <div class="form-floating mb-3">
+                      <input type="file" class="form-control" name="imagefile" id="" accept="image/*" value={formData.imagefile} onChange={handleInputChange} />
+                      <label for="">Image</label>
+                      <span className="text-danger">{errors.imagefile}</span>
                     </div>
                   </div>
 
@@ -156,6 +168,7 @@ export default function AddFormData() {
                       <span className="text-danger">{errors.address}</span>
                     </div>
                   </div>
+
                   <div className="ml-aut">
                     <button type="submit" className="btn btn-success">Submit</button>
                   </div>
